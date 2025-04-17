@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 214 60% 21%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 214 60% 21%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 60% 21%;
+
+    --primary: 214 80% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 95% 93%;
+    --secondary-foreground: 214 60% 21%;
+
+    --muted: 214 95% 93%;
+    --muted-foreground: 214 40% 45%;
+
+    --accent: 214 95% 93%;
+    --accent-foreground: 214 60% 21%;
+
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 95% 90%;
+    --input: 214 95% 90%;
+    --ring: 214 80% 45%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 214 95% 93%;
+    --sidebar-foreground: 214 60% 21%;
+    --sidebar-primary: 214 80% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 95% 90%;
+    --sidebar-accent-foreground: 214 60% 21%;
+    --sidebar-border: 214 95% 85%;
+    --sidebar-ring: 214 80% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-classroom-grey text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .classroom-card {
+    @apply bg-white rounded-md shadow-sm border border-classroom-border p-4 transition-all duration-200 hover:shadow-md;
+  }
+  
+  .classroom-header {
+    @apply text-xl font-medium text-classroom-darkBlue;
+  }
+  
+  .classroom-link {
+    @apply text-classroom-blue hover:text-classroom-darkBlue transition-colors duration-200;
+  }
+}
+
+html, body {
+  height: 100%;
+}
