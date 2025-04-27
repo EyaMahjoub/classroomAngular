@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/connexion', pathMatch: 'full' }, 
   { path: 'etudiant', component: EtudiantComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
