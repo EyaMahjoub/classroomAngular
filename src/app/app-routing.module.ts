@@ -5,6 +5,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { EnseignantComponent } from './enseignant/enseignant.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/connexion', pathMatch: 'full' }, 
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'footer', component: FooterComponent },
   { path: 'connexion', component: ConnexionComponent },
+  { path: 'enseignant', component: EnseignantComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

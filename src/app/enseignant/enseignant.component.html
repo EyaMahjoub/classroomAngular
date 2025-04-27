@@ -1,0 +1,1170 @@
+<app-navbar>
+    <!-- Barre de recherche améliorée avec icône -->
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h4 class="mb-0 text-primary"><i class="fas fa-chalkboard-teacher me-2"></i>Tableau de Bord Enseignant</h4>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-primary text-white">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Rechercher étudiants, cours, documents..." aria-label="Search">
+                    <button class="btn btn-primary" type="button">Go</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-navbar>
+
+<h2> Enginants List</h2>
+<ul *ngFor="let enginant of Enginants">
+  <li >
+    name : {{ enginant.name }}
+   
+  </li>
+  <li>
+    id :{{enginant.id}}
+  </li>
+</ul>
+
+<!-- Tableau de bord enseignant -->
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Menu latéral amélioré avec profil -->
+        <div class="col-md-3">
+            <div class="card custom-menu shadow-sm">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <img src="https://images.unsplash.com/photo-1577880216142-8549e9488dad?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" class="rounded-circle mb-2" width="80" height="80" alt="Profile">
+                    <h5 class="mb-1">Prof. Dupont</h5>
+                    <small class="text-white-50">Mathématiques • Physique</small>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="#dashboard" class="list-group-item list-group-item-action active" data-bs-toggle="tab">
+                        <i class="fas fa-tachometer-alt me-2"></i> Tableau de bord
+                    </a>
+                    <a href="#students" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-user-graduate me-2"></i> Liste Étudiants
+                        <span class="badge bg-primary float-end">142</span>
+                    </a>
+                    <a href="#classes" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-door-open me-2"></i> Liste Classes
+                        <span class="badge bg-primary float-end">5</span>
+                    </a>
+                    <a href="#courses" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-book me-2"></i> Liste Cours
+                        <span class="badge bg-primary float-end">4</span>
+                    </a>
+                    <a href="#assignments" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-tasks me-2"></i> Gestion Devoirs
+                        <span class="badge bg-danger float-end">23</span>
+                    </a>
+                    <a href="/accueil" class="list-group-item list-group-item-action">
+                        <i class="fas fa-home me-2"></i> Retour Accueil
+                    </a>
+                    <a href="/logout" class="list-group-item list-group-item-action text-danger">
+                        <i class="fas fa-sign-out-alt me-2"></i> Déconnexion
+                    </a>
+                </div>
+            </div>
+
+            <!-- Espace pour d'autres widgets -->
+            <div class="mt-4 text-center">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Éducation">
+            </div>
+        </div>
+
+        <!-- Contenu principal avec onglets -->
+        <div class="col-md-9">
+            <div class="tab-content">
+                <!-- Onglet Tableau de bord -->
+                <div class="tab-pane fade show active" id="dashboard">
+                    <!-- Bannière de bienvenue -->
+                    <div class="card bg-primary text-white mb-4 shadow">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="card-title">Bonjour, Professeur Dupont !</h4>
+                                    <p class="card-text">Vous avez 23 devoirs à corriger et 2 messages non lus.</p>
+                                    <a href="#" class="btn btn-light btn-sm">Voir les messages</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartes de statistiques -->
+                    <div class="row mb-4">
+                        <!-- Carte Cours -->
+                        <div class="col-md-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="icon-circle-lg bg-primary-light text-primary mb-3">
+                                        <i class="fas fa-book-open fa-2x"></i>
+                                    </div>
+                                    <h5 class="text-muted">Mes Cours</h5>
+                                    <h2 class="display-5 mb-3">4</h2>
+                                    <div class="progress mb-2" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                    </div>
+                                    <small class="text-muted">75% des ressources partagées</small>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <a href="#courses" class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="tab">Gérer les cours</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carte Devoirs -->
+                        <div class="col-md-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="icon-circle-lg bg-warning-light text-warning mb-3">
+                                        <i class="fas fa-tasks fa-2x"></i>
+                                    </div>
+                                    <h5 class="text-muted">Devoirs à Corriger</h5>
+                                    <h2 class="display-5 mb-3">23</h2>
+                                    <div class="progress mb-2" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 30%"></div>
+                                    </div>
+                                    <small class="text-muted">30% corrigés cette semaine</small>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <a href="#assignments" class="btn btn-outline-warning btn-sm w-100" data-bs-toggle="tab">Commencer</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carte Étudiants -->
+                        <div class="col-md-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="icon-circle-lg bg-info-light text-info mb-3">
+                                        <i class="fas fa-users fa-2x"></i>
+                                    </div>
+                                    <h5 class="text-muted">Étudiants</h5>
+                                    <h2 class="display-5 mb-3">142</h2>
+                                    <div class="progress mb-2" style="height: 8px;">
+                                        <div class="progress-bar bg-info" style="width: 85%"></div>
+                                    </div>
+                                    <small class="text-muted">85% de participation</small>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <a href="#students" class="btn btn-outline-info btn-sm w-100" data-bs-toggle="tab">Voir la liste</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activités récentes -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0"><i class="fas fa-stream me-2"></i>Activités récentes</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Activité 1 -->
+                            <div class="activity-item mb-4">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" class="rounded-circle" width="50" height="50" alt="Student">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">Marie Lambert <span class="text-muted">a soumis un devoir</span></h6>
+                                            <small class="text-muted">Il y a 1 heure</small>
+                                        </div>
+                                        <div class="card border-0 bg-light">
+                                            <div class="card-body p-3">
+                                                <h5 class="card-title mb-1">Devoir d'Algèbre linéaire</h5>
+                                                <p class="card-text mb-2">L'étudiant a soumis son devoir avant la date limite.</p>
+                                                <button class="btn btn-sm btn-primary me-1"><i class="fas fa-check-circle me-1"></i>Corriger</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Activité 2 -->
+                            <div class="activity-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="icon-circle bg-info text-white">
+                                            <i class="fas fa-bell"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">Rappel <span class="text-muted">Réunion départementale</span></h6>
+                                            <small class="text-muted">Demain, 10:00</small>
+                                        </div>
+                                        <div class="card border-0 bg-light">
+                                            <div class="card-body p-3">
+                                                <p class="card-text mb-2">N'oubliez pas la réunion avec l'équipe de mathématiques demain matin.</p>
+                                                <button class="btn btn-sm btn-outline-secondary me-1"><i class="fas fa-calendar-plus me-1"></i>Ajouter à l'agenda</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onglet Liste Étudiants -->
+                <div class="tab-pane fade" id="students">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="fas fa-user-graduate me-2"></i>Liste des Étudiants</h5>
+                            <div class="input-group" style="width: 300px;">
+                                <input type="text" class="form-control" placeholder="Rechercher un étudiant...">
+                                <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Classe</th>
+                                            <th>Email</th>
+                                            <th>Moyenne</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" class="rounded-circle me-2" width="30" height="30" alt="">
+                                                Marie Lambert
+                                            </td>
+                                            <td>Terminale A</td>
+                                            <td>marie.lambert@ecole.fr</td>
+                                            <td>15.2</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" class="rounded-circle me-2" width="30" height="30" alt="">
+                                                Thomas Martin
+                                            </td>
+                                            <td>Terminale B</td>
+                                            <td>thomas.martin@ecole.fr</td>
+                                            <td>12.8</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" class="rounded-circle me-2" width="30" height="30" alt="">
+                                                Sophie Leroy
+                                            </td>
+                                            <td>Terminale A</td>
+                                            <td>sophie.leroy@ecole.fr</td>
+                                            <td>16.5</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" class="rounded-circle me-2" width="30" height="30" alt="">
+                                                Jean Dubois
+                                            </td>
+                                            <td>Terminale B</td>
+                                            <td>jean.dubois@ecole.fr</td>
+                                            <td>14.3</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src="https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" class="rounded-circle me-2" width="30" height="30" alt="">
+                                                Laura Petit
+                                            </td>
+                                            <td>Première C</td>
+                                            <td>laura.petit@ecole.fr</td>
+                                            <td>13.7</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-outline-info"><i class="fas fa-envelope"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center mb-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Précédent</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Suivant</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onglet Liste Classes -->
+                <div class="tab-pane fade" id="classes">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0"><i class="fas fa-door-open me-2"></i>Liste des Classes</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- Classe 1 -->
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 border-primary">
+                                        <div class="card-header bg-primary text-white">
+                                            <h5 class="mb-0">Terminale A</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Classe Terminale A">
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Étudiants
+                                                    <span class="badge bg-primary rounded-pill">24</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Cours
+                                                    <span class="badge bg-primary rounded-pill">3</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Moyenne classe
+                                                    <span class="badge bg-success rounded-pill">14.2</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="#" class="btn btn-primary w-100">Voir détails</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Classe 2 -->
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 border-success">
+                                        <div class="card-header bg-success text-white">
+                                            <h5 class="mb-0">Terminale B</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Classe Terminale B">
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Étudiants
+                                                    <span class="badge bg-success rounded-pill">28</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Cours
+                                                    <span class="badge bg-success rounded-pill">2</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Moyenne classe
+                                                    <span class="badge bg-success rounded-pill">13.7</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="#" class="btn btn-success w-100">Voir détails</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Classe 3 -->
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 border-info">
+                                        <div class="card-header bg-info text-white">
+                                            <h5 class="mb-0">Première C</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Classe Première C">
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Étudiants
+                                                    <span class="badge bg-info rounded-pill">32</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Cours
+                                                    <span class="badge bg-info rounded-pill">4</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Moyenne classe
+                                                    <span class="badge bg-success rounded-pill">12.9</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <a href="#" class="btn btn-info w-100">Voir détails</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onglet Liste Cours -->
+                <div class="tab-pane fade" id="courses">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="fas fa-book me-2"></i>Mes Cours</h5>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newCourseModal">
+                                <i class="fas fa-plus me-1"></i>Nouveau cours
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- Cours 1 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 border-primary">
+                                        <div class="card-header bg-primary text-white">
+                                            <h5 class="mb-0">Algèbre linéaire</h5>
+                                            <small>Terminale A • Groupe 1</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Cours d'Algèbre">
+                                            </div>
+                                            <div class="course-progress mb-3">
+                                                <div class="d-flex justify-content-between mb-1">
+                                                    <small>Progression:</small>
+                                                    <small>65%</small>
+                                                </div>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-primary" style="width: 65%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="course-stats mb-3">
+                                                <div class="row text-center">
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">24</h6>
+                                                        <small class="text-muted">Étudiants</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">5</h6>
+                                                        <small class="text-muted">Devoirs</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">12</h6>
+                                                        <small class="text-muted">Ressources</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <button class="btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#courseContentModal">Contenu</button>
+                                            <button class="btn btn-outline-secondary me-1" data-bs-toggle="modal" data-bs-target="#courseAssignmentsModal">Devoirs</button>
+                                            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#courseStatsModal">Statistiques</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Cours 2 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 border-success">
+                                        <div class="card-header bg-success text-white">
+                                            <h5 class="mb-0">Géométrie avancée</h5>
+                                            <small>Terminale B • Groupe 2</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Cours de Géométrie">
+                                            </div>
+                                            <div class="course-progress mb-3">
+                                                <div class="d-flex justify-content-between mb-1">
+                                                    <small>Progression:</small>
+                                                    <small>42%</small>
+                                                </div>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-success" style="width: 42%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="course-stats mb-3">
+                                                <div class="row text-center">
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">28</h6>
+                                                        <small class="text-muted">Étudiants</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">3</h6>
+                                                        <small class="text-muted">Devoirs</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">8</h6>
+                                                        <small class="text-muted">Ressources</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <button class="btn btn-outline-success me-1" data-bs-toggle="modal" data-bs-target="#courseContentModal">Contenu</button>
+                                            <button class="btn btn-outline-secondary me-1" data-bs-toggle="modal" data-bs-target="#courseAssignmentsModal">Devoirs</button>
+                                            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#courseStatsModal">Statistiques</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Cours 3 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 border-warning">
+                                        <div class="card-header bg-warning text-white">
+                                            <h5 class="mb-0">Analyse Mathématique</h5>
+                                            <small>Terminale A • Groupe 2</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <img src="https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Cours d'Analyse">
+                                            </div>
+                                            <div class="course-progress mb-3">
+                                                <div class="d-flex justify-content-between mb-1">
+                                                    <small>Progression:</small>
+                                                    <small>35%</small>
+                                                </div>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-warning" style="width: 35%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="course-stats mb-3">
+                                                <div class="row text-center">
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">22</h6>
+                                                        <small class="text-muted">Étudiants</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">2</h6>
+                                                        <small class="text-muted">Devoirs</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">6</h6>
+                                                        <small class="text-muted">Ressources</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <button class="btn btn-outline-warning me-1" data-bs-toggle="modal" data-bs-target="#courseContentModal">Contenu</button>
+                                            <button class="btn btn-outline-secondary me-1" data-bs-toggle="modal" data-bs-target="#courseAssignmentsModal">Devoirs</button>
+                                            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#courseStatsModal">Statistiques</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Cours 4 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 border-info">
+                                        <div class="card-header bg-info text-white">
+                                            <h5 class="mb-0">Probabilités</h5>
+                                            <small>Première C • Groupe 1</small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center mb-3">
+                                                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Cours de Probabilités">
+                                            </div>
+                                            <div class="course-progress mb-3">
+                                                <div class="d-flex justify-content-between mb-1">
+                                                    <small>Progression:</small>
+                                                    <small>58%</small>
+                                                </div>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-info" style="width: 58%"></div>
+                                                </div>
+                                            </div>
+                                            <div class="course-stats mb-3">
+                                                <div class="row text-center">
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">32</h6>
+                                                        <small class="text-muted">Étudiants</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">4</h6>
+                                                        <small class="text-muted">Devoirs</small>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <h6 class="mb-0">10</h6>
+                                                        <small class="text-muted">Ressources</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer bg-transparent">
+                                            <button class="btn btn-outline-info me-1" data-bs-toggle="modal" data-bs-target="#courseContentModal">Contenu</button>
+                                            <button class="btn btn-outline-secondary me-1" data-bs-toggle="modal" data-bs-target="#courseAssignmentsModal">Devoirs</button>
+                                            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#courseStatsModal">Statistiques</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onglet Gestion Devoirs -->
+                <div class="tab-pane fade" id="assignments">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Gestion des Devoirs</h5>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newAssignmentModal">
+                                <i class="fas fa-plus me-1"></i>Nouveau devoir
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="nav nav-tabs mb-4" id="assignmentsTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button">
+                                        À corriger (23)
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="corrected-tab" data-bs-toggle="tab" data-bs-target="#corrected" type="button">
+                                        Corrigés (12)
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button">
+                                        Tous les devoirs
+                                    </button>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content" id="assignmentsTabsContent">
+                                <div class="tab-pane fade show active" id="pending">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Devoir</th>
+                                                    <th>Classe</th>
+                                                    <th>Date limite</th>
+                                                    <th>Soumissions</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Devoir d'Algèbre n°3</td>
+                                                    <td>Terminale A</td>
+                                                    <td>15/06/2023</td>
+                                                    <td>18/24</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#gradeAssignmentModal">Corriger</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Projet Géométrie</td>
+                                                    <td>Terminale B</td>
+                                                    <td>10/06/2023</td>
+                                                    <td>22/28</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#gradeAssignmentModal">Corriger</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Exercices Probabilités</td>
+                                                    <td>Première C</td>
+                                                    <td>12/06/2023</td>
+                                                    <td>25/32</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#gradeAssignmentModal">Corriger</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-pane fade" id="corrected">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Devoir</th>
+                                                    <th>Classe</th>
+                                                    <th>Date de correction</th>
+                                                    <th>Moyenne</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Devoir d'Algèbre n°2</td>
+                                                    <td>Terminale A</td>
+                                                    <td>05/06/2023</td>
+                                                    <td>14.2</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary">Voir corrections</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Contrôle Analyse</td>
+                                                    <td>Terminale A</td>
+                                                    <td>01/06/2023</td>
+                                                    <td>12.8</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary">Voir corrections</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab-pane fade" id="all">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Devoir</th>
+                                                    <th>Classe</th>
+                                                    <th>Date limite</th>
+                                                    <th>Statut</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Devoir d'Algèbre n°3</td>
+                                                    <td>Terminale A</td>
+                                                    <td>15/06/2023</td>
+                                                    <td><span class="badge bg-warning">En correction</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-warning">Corriger</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Projet Géométrie</td>
+                                                    <td>Terminale B</td>
+                                                    <td>10/06/2023</td>
+                                                    <td><span class="badge bg-warning">En correction</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-warning">Corriger</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Devoir d'Algèbre n°2</td>
+                                                    <td>Terminale A</td>
+                                                    <td>05/06/2023</td>
+                                                    <td><span class="badge bg-success">Corrigé</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary">Voir</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Nouveau Cours -->
+<div class="modal fade" id="newCourseModal" tabindex="-1" aria-labelledby="newCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="newCourseModalLabel">Créer un nouveau cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="courseName" class="form-label">Nom du cours</label>
+                        <input type="text" class="form-control" id="courseName" placeholder="Algèbre linéaire">
+                    </div>
+                    <div class="mb-3">
+                        <label for="courseClass" class="form-label">Classe</label>
+                        <select class="form-select" id="courseClass">
+                            <option selected>Choisir une classe</option>
+                            <option>Terminale A</option>
+                            <option>Terminale B</option>
+                            <option>Première C</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="courseDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="courseDescription" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="courseImage" class="form-label">Image du cours</label>
+                        <input class="form-control" type="file" id="courseImage">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Créer le cours</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Contenu Cours -->
+<div class="modal fade" id="courseContentModal" tabindex="-1" aria-labelledby="courseContentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="courseContentModalLabel">Contenu du cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-4">
+                    <h5>Ressources pédagogiques</h5>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Chapitre 1 - Introduction à l'algèbre linéaire</h6>
+                                <small>3 days ago</small>
+                            </div>
+                            <p class="mb-1">PDF • 2.4 MB</p>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Exercices pratiques - Série 1</h6>
+                                <small>1 week ago</small>
+                            </div>
+                            <p class="mb-1">PDF • 1.1 MB</p>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Ajouter une nouvelle ressource</h5>
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="courseResource">
+                    </div>
+                    <div class="mb-3">
+                        <label for="resourceDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="resourceDescription" rows="2"></textarea>
+                    </div>
+                    <button class="btn btn-primary">Ajouter</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Devoirs Cours -->
+<div class="modal fade" id="courseAssignmentsModal" tabindex="-1" aria-labelledby="courseAssignmentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="courseAssignmentsModalLabel">Devoirs du cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-4">
+                    <button class="btn btn-sm btn-primary mb-3">
+                        <i class="fas fa-plus me-1"></i>Nouveau devoir
+                    </button>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Devoir</th>
+                                    <th>Date limite</th>
+                                    <th>Soumissions</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Devoir n°1</td>
+                                    <td>15/05/2023</td>
+                                    <td>24/24</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">Voir</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Devoir n°2</td>
+                                    <td>30/05/2023</td>
+                                    <td>22/24</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">Voir</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Statistiques Cours -->
+<div class="modal fade" id="courseStatsModal" tabindex="-1" aria-labelledby="courseStatsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="courseStatsModalLabel">Statistiques du cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-4">
+                    <h4>Algèbre linéaire</h4>
+                    <p class="text-muted">Terminale A • Groupe 1</p>
+                </div>
+                <div class="mb-3">
+                    <h6>Progression globale</h6>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-primary" style="width: 65%"></div>
+                    </div>
+                    <small class="text-muted">65% complété</small>
+                </div>
+                <div class="mb-3">
+                    <h6>Participation moyenne</h6>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-success" style="width: 78%"></div>
+                    </div>
+                    <small class="text-muted">78% de participation</small>
+                </div>
+                <div class="mb-3">
+                    <h6>Moyenne de la classe</h6>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1 me-3">
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-info" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <span class="badge bg-info">14.0/20</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Nouveau Devoir -->
+<div class="modal fade" id="newAssignmentModal" tabindex="-1" aria-labelledby="newAssignmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="newAssignmentModalLabel">Créer un nouveau devoir</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="assignmentTitle" class="form-label">Titre du devoir</label>
+                        <input type="text" class="form-control" id="assignmentTitle" placeholder="Devoir d'Algèbre n°3">
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignmentCourse" class="form-label">Cours</label>
+                        <select class="form-select" id="assignmentCourse">
+                            <option selected>Choisir un cours</option>
+                            <option>Algèbre linéaire</option>
+                            <option>Géométrie avancée</option>
+                            <option>Analyse Mathématique</option>
+                            <option>Probabilités</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignmentClass" class="form-label">Classe</label>
+                        <select class="form-select" id="assignmentClass">
+                            <option selected>Choisir une classe</option>
+                            <option>Terminale A</option>
+                            <option>Terminale B</option>
+                            <option>Première C</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignmentDueDate" class="form-label">Date limite</label>
+                        <input type="date" class="form-control" id="assignmentDueDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignmentDescription" class="form-label">Instructions</label>
+                        <textarea class="form-control" id="assignmentDescription" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignmentFile" class="form-label">Fichier du devoir (optionnel)</label>
+                        <input class="form-control" type="file" id="assignmentFile">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Créer le devoir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Corriger Devoir -->
+<div class="modal fade" id="gradeAssignmentModal" tabindex="-1" aria-labelledby="gradeAssignmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="gradeAssignmentModalLabel">Corriger le devoir</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-4">
+                    <h5>Devoir d'Algèbre n°3</h5>
+                    <p class="text-muted">Terminale A • Date limite: 15/06/2023</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Étudiant</th>
+                                <th>Soumission</th>
+                                <th>Note</th>
+                                <th>Commentaire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Marie Lambert</td>
+                                <td><a href="#">devoir_algebre.pdf</a></td>
+                                <td><input type="number" class="form-control form-control-sm" style="width: 70px;" min="0" max="20" step="0.5"></td>
+                                <td><input type="text" class="form-control form-control-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Thomas Martin</td>
+                                <td><a href="#">devoir_algebre.pdf</a></td>
+                                <td><input type="number" class="form-control form-control-sm" style="width: 70px;" min="0" max="20" step="0.5"></td>
+                                <td><input type="text" class="form-control form-control-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Enregistrer les notes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer class="mt-4">
+  
+</app-footer>
+
+<!-- Styles personnalisés -->
+<style>
+    .custom-menu {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .icon-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    .icon-circle-lg {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    .bg-primary-light {
+        background-color: rgba(13, 110, 253, 0.1);
+    }
+    
+    .bg-warning-light {
+        background-color: rgba(255, 193, 7, 0.1);
+    }
+    
+    .bg-info-light {
+        background-color: rgba(23, 162, 184, 0.1);
+    }
+    
+    .bg-success-light {
+        background-color: rgba(25, 135, 84, 0.1);
+    }
+    
+    .activity-item {
+        padding: 15px;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+    
+    .activity-item:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .course-progress .progress {
+        border-radius: 4px;
+    }
+    
+    #teacher-calendar {
+        min-height: 500px;
+    }
+</style>
+
+<!-- Script pour initialiser le calendrier -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestion des onglets
+        const triggerTabList = [].slice.call(document.querySelectorAll('a[data-bs-toggle="tab"]'));
+        triggerTabList.forEach(function (triggerEl) {
+            const tabTrigger = new bootstrap.Tab(triggerEl);
+            
+            triggerEl.addEventListener('click', function (event) {
+                event.preventDefault();
+                tabTrigger.show();
+            });
+        });
+
+        // Initialisation des modaux
+        var modals = ['newCourseModal', 'courseContentModal', 'courseAssignmentsModal', 
+                     'courseStatsModal', 'newAssignmentModal', 'gradeAssignmentModal'];
+        
+        modals.forEach(function(modalId) {
+            var modal = document.getElementById(modalId);
+            if (modal) {
+                modal.addEventListener('shown.bs.modal', function () {
+                    console.log(modalId + ' opened');
+                });
+            }
+        });
+    });
+</script>
+
