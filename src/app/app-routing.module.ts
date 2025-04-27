@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'etudiant', component: EtudiantComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'footer', component: FooterComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'enseignant', component: EnseignantComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
