@@ -18,6 +18,17 @@
     </div>
 </app-navbar>
 
+<h2> Enginants List</h2>
+<ul *ngFor="let enginant of Enginants">
+  <li >
+    name : {{ enginant.name }}
+   
+  </li>
+  <li>
+    id :{{enginant.id}}
+  </li>
+</ul>
+
 <!-- Tableau de bord enseignant -->
 <div class="container-fluid mt-4">
     <div class="row">
@@ -78,9 +89,7 @@
                                     <p class="card-text">Vous avez 23 devoirs à corriger et 2 messages non lus.</p>
                                     <a href="#" class="btn btn-light btn-sm">Voir les messages</a>
                                 </div>
-                                <div class="col-md-4 text-center">
-                                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&h=200&q=80" class="img-fluid rounded" width="150" alt="Teaching">
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -1158,3 +1167,4 @@
         });
     });
 </script>
+

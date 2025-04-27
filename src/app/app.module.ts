@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,8 @@ import { EnseignantComponent } from './enseignant/enseignant.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
