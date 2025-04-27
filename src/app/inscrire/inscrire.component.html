@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Site Éducatif</title>
+</head>
+<body>
+    <div class="register-container">
+        <div class="education-icon">📚</div>
+        <h1>Créer votre compte</h1>
+        
+        <form class="register-form" action="#" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="input-group half-width">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                </div>
+                <div class="input-group half-width">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="photo">Photo de profil</label>
+                <div class="file-upload-container">
+                    <div class="file-upload">
+                        <input type="file" id="photo" name="photo" accept="image/*">
+                        <label for="photo" class="file-label">
+                            <span class="upload-icon">📤</span>
+                            <span class="upload-text">Choisir une image</span>
+                        </label>
+                    </div>
+                    <div class="file-preview" id="file-preview"></div>
+                </div>
+            </div>
+            
+            <button type="submit" class="register-btn">S'inscrire</button>
+        </form>
+        
+        <div class="links">
+            <a href="connexion">Déjà un compte ? Se connecter</a>
+        </div>
+    </div>
+
+    <script>
+        // Prévisualisation de l'image
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const preview = document.getElementById('file-preview');
+            preview.innerHTML = '';
+            
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '100px';
+                    img.style.maxHeight = '100px';
+                    img.style.borderRadius = '50%';
+                    preview.appendChild(img);
+                }
+                
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>

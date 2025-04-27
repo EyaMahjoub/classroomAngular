@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { InscrireComponent } from './inscrire/inscrire.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     ConnexionComponent,
     EnseignantComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    InscrireComponent
   ],
   imports: [
     BrowserModule,
