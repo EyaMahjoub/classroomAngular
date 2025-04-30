@@ -8,6 +8,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
+import { ClassListComponent } from './class-list/class-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/connexion', pathMatch: 'full' }, 
@@ -18,7 +19,9 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscrire', component: InscrireComponent },
   { path: 'enseignant', component: EnseignantComponent },
+  { path: 'classes', component: ClassListComponent },
   { path: '**', component: NotFoundComponent },
+  
 ];
 
 @NgModule({

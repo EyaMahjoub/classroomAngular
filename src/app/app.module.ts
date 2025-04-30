@@ -11,6 +11,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { EnseignantComponent } from './enseignant/enseignant.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
+import { ClassListComponent } from './class-list/class-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InscrireComponent } from './inscrire/inscrire.component';
     ConnexionComponent,
     EnseignantComponent,
     NotFoundComponent,
-    InscrireComponent
+    InscrireComponent,
+    ClassListComponent
   ],
   imports: [
     BrowserModule,

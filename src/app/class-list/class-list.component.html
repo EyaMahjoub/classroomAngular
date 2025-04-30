@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste Classes</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Inclure SweetAlert2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200 font-sans antialiased">
+
+  <!-- Bouton Ajouter une classe -->
+  <button id="add-class-btn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 mt-4 ml-4">
+    <i class="fas fa-plus mr-2"></i> Ajouter une classe
+  </button>
+  
+
+  <div class="container my-4 px-4">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="classes-container">
+      <div class="card bg-white shadow-xl rounded-lg overflow-hidden h-full" id="class-item" *ngFor="let enginant of Enginants">
+        <h5 class="text-xl font-bold text-blue-500" id="class-item-title"> classe {{ enginant.nom }}</h5>
+
+        <img class="w-full h-56 object-cover" src="{{ enginant.image }}" alt="Class Image" id="class-item-image">
+        <div class="p-4">
+            <h5> </h5>
+       
+          <h5 class="text-xl font-bold text-gray-900" id="class-item-title"> Desciption : </h5>
+          <p class="text-gray-700 text-base" id="class-item-description">{{ enginant.description }}</p>
+         
+        </div>
+        <div class="p-7 bg-gray-100" id="emm">
+          <div class="button-container">
+            <button class="btn-edit">
+              <i class="fas fa-edit"></i> Editer
+            </button>
+            <button class="btn-delete">
+              <i class="fas fa-trash-alt"></i> Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Inclure SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.5.0/dist/sweetalert2.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* Custom Card Alignment */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width:500px;
+  margin: 0 auto; /* Center the cards horizontally */
+}
+
+/* Container padding adjustments */
+.container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Responsiveness */
+@media (min-width: 1024px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+body{
+    background-color: #fff;
+}
+#emm{
+    background: #fff;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; /* Espace entre les boutons */
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.btn-edit {
+  background-color: #4C51BF; /* couleur indigo */
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #434190;
+}
+
+.btn-delete {
+  background-color: #E53E3E; /* couleur rouge */
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #C53030;
+}
