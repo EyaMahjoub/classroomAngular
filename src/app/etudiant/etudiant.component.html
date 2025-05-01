@@ -9,14 +9,8 @@
                    <h5 class="mb-0">Mes cours</h5>
                </div>
                <div class="list-group list-group-flush">
-                   <a href="#" class="list-group-item list-group-item-action active">
-                       <i class="fa fa-book me-2"></i> Mathématiques
-                   </a>
-                   <a href="#" class="list-group-item list-group-item-action">
-                       <i class="fa fa-book me-2"></i> Physique
-                   </a>
-                   <a href="#" class="list-group-item list-group-item-action">
-                       <i class="fa fa-book me-2"></i> Informatique
+                   <a *ngFor="let c of classes" href="#" (click)="chargerClasse(c.id); $event.preventDefault()" (click)="selectClasse(c); $event.preventDefault()"(click)="afficherDetails = true ; $event.preventDefault()" class="list-group-item list-group-item-action active">
+                       <i class="fa fa-book me-2"></i>  {{ c.nom }}
                    </a>
                </div>
            </div>
@@ -52,33 +46,39 @@
            </div>
        </div>
 
-       <!-- Main Content Area -->
+       <!-- Onglets navigation -->
        <div class="col-md-9">
+           <ul class="nav nav-tabs mb-3">
+               <li class="nav-item">
+                   <a class="nav-link" [class.active]="selectedTab === 'flux'" (click)="selectedTab = 'flux'; $event.preventDefault()"  href="#" >Flux</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" [class.active]="selectedTab === 'personnes'" (click)="selectedTab = 'personnes'; $event.preventDefault()" href="#">Personnes</a>
+               </li>
+           </ul>
+
            <!-- Stream Section -->
-           <div class="card mb-4">
+           <div class="card mb-4" *ngIf="selectedTab === 'flux'">
                <div class="card-header bg-light">
-                   <h5 class="mb-0">Flux d'activités</h5>
+                   <h5 class="mb-0">Flux</h5>
                </div>
-               <div class="card-body">
-                   <!-- Announcement -->
-                   <div class="mb-4">
+               <div class="card-body" *ngIf="cours.length > 0">
+                   <div class="mb-4" *ngFor="let cour of cours">
                        <div class="d-flex align-items-center mb-2">
-                           <img src="assets/img/team-1.jpg" class="rounded-circle me-2" width="40" height="40" alt="Teacher">
+                           <img [src]="enseignant.image" class="rounded-circle me-2" width="40" height="40" alt="Teacher">
                            <div>
-                               <h6 class="mb-0">Professeur Dupont</h6>
-                               <small class="text-muted">Il y a 2 heures</small>
+                               <h6 class="mb-0">Professeur(e) {{ enseignant.prenom }} {{ enseignant.nom }}</h6>
+                               <small class="text-muted">{{cour.creation | date: 'dd MMMM yyyy, HH:mm'}}</small>
                            </div>
                        </div>
                        <div class="card">
                            <div class="card-body">
-                               <h5 class="card-title">Devoir de mathématiques</h5>
-                               <p class="card-text">N'oubliez pas de rendre votre devoir avant vendredi prochain.</p>
-                               <a href="#" class="btn btn-primary btn-sm">Voir le devoir</a>
+                               <h5 class="card-title">a publié un nouveau support de cours : {{cour.nom}}</h5>
+                               <p class="card-text">{{cour.description}}</p>
+                               <a href="#" class="btn btn-primary btn-sm">Voir le cour</a>
                            </div>
                        </div>
                    </div>
-
-                   <!-- Material -->
                    <div class="mb-4">
                        <div class="d-flex align-items-center mb-2">
                            <img src="assets/img/team-2.jpg" class="rounded-circle me-2" width="40" height="40" alt="Teacher">
@@ -103,33 +103,68 @@
                        </div>
                    </div>
                </div>
+               <div *ngIf="cours.length == 0">
+                   <h6>Aucun cours n'est disponible pour le moment.</h6>
+               </div>
            </div>
 
-           <!-- Course Details -->
-           <div class="card">
+           <!-- Section Personnes -->
+           <div *ngIf="selectedTab === 'personnes'" class="card mb-4 mt-3">
                <div class="card-header bg-light">
-                   <h5 class="mb-0">Détails du cours</h5>
+                   <h5 class="mb-0">Personnes</h5>
                </div>
-               <div class="card-body">
-                   <div class="row">
-                       <div class="col-md-6">
-                           <h6>Informations du cours</h6>
-                           <ul class="list-unstyled">
-                               <li><strong>Professeur:</strong> M. Dupont</li>
-                               <li><strong>Horaire:</strong> Lundi et Jeudi, 14h-16h</li>
-                               <li><strong>Salle:</strong> B203</li>
-                           </ul>
-                       </div>
-                       <div class="col-md-6">
-                           <h6>Progression</h6>
-                           <div class="progress mb-2">
-                               <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                           </div>
-                           <small class="text-muted">3 chapitres sur 4 complétés</small>
+               <div class="card-body"*ngIf="etudiants.length > 0">
+                   <h6>Enseignant</h6>
+                   <div class="d-flex align-items-center mb-3">
+                       <img [src]="enseignant.image" class="rounded-circle me-3" width="50" height="50" alt="Enseignant">
+                       <div>
+                           <p class="mb-0">{{ enseignant.prenom }} {{ enseignant.nom }}</p>
                        </div>
                    </div>
+                   <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="mb-0">Liste des étudiants</h5>
+                    <span class="text-muted">{{ etudiants.length }} élève(s)</span>
+                  </div>
+                   <ul class="list-group">
+                       <li *ngFor="let etu of etudiants" class="list-group-item">
+                        <div class="d-flex align-items-center mb-3">
+                          <img [src]="etu.image" class="rounded-circle me-3" width="50" height="50" alt="Enseignant">
+                          <div>
+                            {{ etu.prenom }} {{ etu.nom }} </div>
+                          </div>
+                       </li>
+                   </ul>
                </div>
+               <div *ngIf="etudiants.length == 0">
+                <h6>Aucun personne n'est disponible pour le moment.</h6>
+            </div>
            </div>
+            <!-- Course Details -->
+            <div class="card"*ngIf="afficherDetails">
+              <div class="card-header bg-light">
+                  <h5 class="mb-0">Détails du cours</h5>
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <h6>Informations du cours {{selectedClasse.nom}} </h6>
+                          <ul class="list-unstyled">
+                              <li><strong>Professeur:</strong> {{ enseignant.prenom }} {{ enseignant.nom }}</li>
+                              <li><strong>Created At:</strong> {{selectedClasse.creation | date: 'dd MMMM yyyy'}}</li>
+                              <li><strong>description:</strong> {{selectedClasse.description}}</li>
+                          </ul>
+                      </div>
+                      <div class="col-md-6">
+                          <h6>Progression</h6>
+                          <div class="progress mb-2">
+                              <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                          </div>
+                          <small class="text-muted">3 chapitres sur 4 complétés</small>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
        </div>
    </div>
 </div>
