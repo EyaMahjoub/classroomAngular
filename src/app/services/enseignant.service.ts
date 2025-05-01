@@ -16,4 +16,9 @@ export class EnseignantService {
     return this.http.get('http://localhost:8000/api/enseignants/1/etudiants'); 
 
 }
+getlistcours(): Observable<any> {
+  
+  return this.http.get('http://localhost:8000/api/listeCours/1'); 
+
+}
 }

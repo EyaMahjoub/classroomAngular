@@ -36,19 +36,19 @@
                     </a>
                     <a [routerLink]="['/etudiants']" class="list-group-item list-group-item-action" data-bs-toggle="tab">
                         <i class="fas fa-user-graduate me-2"></i> Liste Étudiants
-                        <span class="badge bg-primary float-end">142</span>
+                  
                     </a>
                     
                     <a [routerLink]="['/classes']" class="list-group-item list-group-item-action">
                         <i class="fas fa-door-open me-2"></i> Liste Classes
                       </a>
-                    <a href="#courses" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                    <a [routerLink]="['/cours']"  class="list-group-item list-group-item-action" data-bs-toggle="tab">
                         <i class="fas fa-book me-2"></i> Liste Cours
-                        <span class="badge bg-primary float-end">4</span>
+                     
                     </a>
                     <a href="#assignments" class="list-group-item list-group-item-action" data-bs-toggle="tab">
                         <i class="fas fa-tasks me-2"></i> Gestion Devoirs
-                        <span class="badge bg-danger float-end">23</span>
+                    
                     </a>
                     <a href="/accueil" class="list-group-item list-group-item-action">
                         <i class="fas fa-home me-2"></i> Retour Accueil
@@ -187,70 +187,7 @@
 
             
             
-                <!-- Onglet Liste Cours -->
-                <div class="tab-pane fade" id="courses">
-                    <div class="card shadow-sm">
-                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0"><i class="fas fa-book me-2"></i>Mes Cours</h5>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newCourseModal">
-                                <i class="fas fa-plus me-1"></i>Nouveau cours
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <!-- Cours 1 -->
-                                <div class="col-md-6 mb-4">
-                                    <div class="card h-100 border-primary">
-                                        <div class="card-header bg-primary text-white">
-                                            <h5 class="mb-0">Algèbre linéaire</h5>
-                                            <small>Terminale A • Groupe 1</small>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="text-center mb-3">
-                                                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80" class="img-fluid rounded" alt="Cours d'Algèbre">
-                                            </div>
-                                            <div class="course-progress mb-3">
-                                                <div class="d-flex justify-content-between mb-1">
-                                                    <small>Progression:</small>
-                                                    <small>65%</small>
-                                                </div>
-                                                <div class="progress" style="height: 8px;">
-                                                    <div class="progress-bar bg-primary" style="width: 65%"></div>
-                                                </div>
-                                            </div>
-                                            <div class="course-stats mb-3">
-                                                <div class="row text-center">
-                                                    <div class="col-4">
-                                                        <h6 class="mb-0">24</h6>
-                                                        <small class="text-muted">Étudiants</small>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <h6 class="mb-0">5</h6>
-                                                        <small class="text-muted">Devoirs</small>
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <h6 class="mb-0">12</h6>
-                                                        <small class="text-muted">Ressources</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer bg-transparent">
-                                            <button class="btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#courseContentModal">Contenu</button>
-                                            <button class="btn btn-outline-secondary me-1" data-bs-toggle="modal" data-bs-target="#courseAssignmentsModal">Devoirs</button>
-                                            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#courseStatsModal">Statistiques</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                               
-                               
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+               
                 <!-- Onglet Gestion Devoirs -->
                 <div class="tab-pane fade" id="assignments">
                     <div class="card shadow-sm">
@@ -414,191 +351,6 @@
     </div>
 </div>
 
-<!-- Modal Nouveau Cours -->
-<div class="modal fade" id="newCourseModal" tabindex="-1" aria-labelledby="newCourseModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="newCourseModalLabel">Créer un nouveau cours</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="courseName" class="form-label">Nom du cours</label>
-                        <input type="text" class="form-control" id="courseName" placeholder="Algèbre linéaire">
-                    </div>
-                    <div class="mb-3">
-                        <label for="courseClass" class="form-label">Classe</label>
-                        <select class="form-select" id="courseClass">
-                            <option selected>Choisir une classe</option>
-                            <option>Terminale A</option>
-                            <option>Terminale B</option>
-                            <option>Première C</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="courseDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="courseDescription" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="courseImage" class="form-label">Image du cours</label>
-                        <input class="form-control" type="file" id="courseImage">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-primary">Créer le cours</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Contenu Cours -->
-<div class="modal fade" id="courseContentModal" tabindex="-1" aria-labelledby="courseContentModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="courseContentModalLabel">Contenu du cours</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-4">
-                    <h5>Ressources pédagogiques</h5>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1">Chapitre 1 - Introduction à l'algèbre linéaire</h6>
-                                <small>3 days ago</small>
-                            </div>
-                            <p class="mb-1">PDF • 2.4 MB</p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="mb-1">Exercices pratiques - Série 1</h6>
-                                <small>1 week ago</small>
-                            </div>
-                            <p class="mb-1">PDF • 1.1 MB</p>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h5>Ajouter une nouvelle ressource</h5>
-                    <div class="mb-3">
-                        <input class="form-control" type="file" id="courseResource">
-                    </div>
-                    <div class="mb-3">
-                        <label for="resourceDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="resourceDescription" rows="2"></textarea>
-                    </div>
-                    <button class="btn btn-primary">Ajouter</button>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Devoirs Cours -->
-<div class="modal fade" id="courseAssignmentsModal" tabindex="-1" aria-labelledby="courseAssignmentsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="courseAssignmentsModalLabel">Devoirs du cours</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-4">
-                    <button class="btn btn-sm btn-primary mb-3">
-                        <i class="fas fa-plus me-1"></i>Nouveau devoir
-                    </button>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Devoir</th>
-                                    <th>Date limite</th>
-                                    <th>Soumissions</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Devoir n°1</td>
-                                    <td>15/05/2023</td>
-                                    <td>24/24</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary">Voir</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Devoir n°2</td>
-                                    <td>30/05/2023</td>
-                                    <td>22/24</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary">Voir</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Statistiques Cours -->
-<div class="modal fade" id="courseStatsModal" tabindex="-1" aria-labelledby="courseStatsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="courseStatsModalLabel">Statistiques du cours</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center mb-4">
-                    <h4>Algèbre linéaire</h4>
-                    <p class="text-muted">Terminale A • Groupe 1</p>
-                </div>
-                <div class="mb-3">
-                    <h6>Progression globale</h6>
-                    <div class="progress" style="height: 10px;">
-                        <div class="progress-bar bg-primary" style="width: 65%"></div>
-                    </div>
-                    <small class="text-muted">65% complété</small>
-                </div>
-                <div class="mb-3">
-                    <h6>Participation moyenne</h6>
-                    <div class="progress" style="height: 10px;">
-                        <div class="progress-bar bg-success" style="width: 78%"></div>
-                    </div>
-                    <small class="text-muted">78% de participation</small>
-                </div>
-                <div class="mb-3">
-                    <h6>Moyenne de la classe</h6>
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1 me-3">
-                            <div class="progress" style="height: 10px;">
-                                <div class="progress-bar bg-info" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        <span class="badge bg-info">14.0/20</span>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Modal Nouveau Devoir -->
 <div class="modal fade" id="newAssignmentModal" tabindex="-1" aria-labelledby="newAssignmentModalLabel" aria-hidden="true">

@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
 import { ClassListComponent } from './class-list/class-list.component';
 import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.component';
+import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.compo
     NotFoundComponent,
     InscrireComponent,
     ClassListComponent,
-    ListeEtudiantsComponent
+    ListeEtudiantsComponent,
+    ListeCoursComponent
   ],
   imports: [
     BrowserModule,

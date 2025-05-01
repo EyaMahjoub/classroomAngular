@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
 import { ClassListComponent } from './class-list/class-list.component';
 import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.component';
+import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/connexion', pathMatch: 'full' }, 
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'enseignant', component: EnseignantComponent },
   { path: 'classes', component: ClassListComponent },
   { path: 'etudiants', component: ListeEtudiantsComponent },
-
+  { path: 'cours', component:ListeCoursComponent},
   { path: '**', component: NotFoundComponent },
   
 ];

@@ -1,0 +1,321 @@
+:root {
+    --primary-color: rgba(0, 255, 255, 0.9);        /* Cyan with transparency */
+    --primary-dark: rgba(0, 179, 179, 0.9);         /* Darker cyan with transparency */
+    --primary-light: rgba(224, 255, 255, 0.85);     /* Very light cyan with transparency */
+    --secondary-color: rgba(255, 110, 199, 0.9);    /* Modern pink with transparency */
+    --accent-color: rgba(147, 112, 219, 0.9);       /* Lavender with transparency */
+    --success-color: rgba(0, 209, 178, 0.9);        /* Turquoise with transparency */
+    --warning-color: rgba(255, 221, 87, 0.9);       /* Soft yellow with transparency */
+    --danger-color: rgba(255, 56, 96, 0.9);         /* Bright red with transparency */
+    --light-color: rgba(255, 255, 255, 0.98);       /* Pure white with slight transparency */
+    --dark-color: rgba(45, 52, 54, 0.95);           /* Anthracite gray with transparency */
+    --gray-color: rgba(164, 176, 189, 0.7);         /* Medium gray with transparency */
+    --bg-color: rgba(248, 249, 250, 0.95);          /* Very light gray with transparency */
+    --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --glass-effect: blur(8px) saturate(180%);
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 110, 199, 0.05) 0%, transparent 20%);
+}
+
+/* Enhanced typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Glass card system */
+.card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--card-shadow);
+    background: rgba(255, 255, 255, 0.75);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: var(--glass-effect);
+    -webkit-backdrop-filter: var(--glass-effect);
+}
+
+.card.glass {
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.card-header {
+    border-bottom: none;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--dark-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-header h5 {
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary-dark), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Modern glass buttons */
+.btn {
+    border-radius: 12px;
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
+    color: var(--dark-color);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255,255,255,0.1) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0.1) 100%);
+    z-index: 0;
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+}
+
+/* Primary button with glass effect */
+.btn-primary {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: var(--primary-dark);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: rgba(0, 255, 255, 0.2);
+    color: var(--primary-dark);
+}
+
+/* Outline buttons with glow effect */
+.btn-outline-primary {
+    background-color: transparent;
+    color: var(--primary-dark);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+/* Progress bar with glass effect */
+.progress {
+    border-radius: 100px;
+    height: 10px;
+    background-color: rgba(0, 200, 200, 0.1);
+    overflow: hidden;
+    backdrop-filter: blur(2px);
+}
+
+.progress-bar {
+    border-radius: 100px;
+    background: linear-gradient(90deg, 
+        var(--primary-color), 
+        var(--primary-dark));
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+    transition: width 0.6s ease;
+}
+
+/* Glass modals */
+.modal-content {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: var(--glass-effect);
+    -webkit-backdrop-filter: var(--glass-effect);
+}
+
+.modal-header {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--dark-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Enhanced form controls */
+.form-control, .form-select {
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Card footer with glass effect */
+.card-footer {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1.25rem 1.5rem;
+    backdrop-filter: blur(4px);
+}
+
+/* Stats with glass effect */
+.course-stats {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1.25rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Floating action button */
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+    transition: var(--transition);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.fab:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card {
+        border-radius: 12px;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+    }
+    
+    .fab {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+/* Enhanced animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.card {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.floating {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}

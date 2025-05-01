@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Cours</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Onglet Liste Cours -->
+<div class="tab-pane fade show active" id="courses">
+    <div class="card shadow-sm m-4">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fas fa-book me-2"></i>Mes Cours</h5>
+            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newCourseModal">
+                <i class="fas fa-plus me-1"></i>Nouveau cours
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Cours 1 -->
+                <div class="col-md-6 mb-4" *ngFor="let cour of cours">
+                    <div class="card h-100 border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">{{cour.titre}}</h5>
+                            <small>{{cour.nom}}</small>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                Description : {{cour.description}}
+                            </div>
+                            <div class="mb-3">
+                               Créé le : {{cour.createdAt}}
+                            </div>
+                            <div class="course-progress mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Progression:</small>
+                                    <small>65%</small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div class="course-stats mb-3">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <h6 class="mb-0">24</h6>
+                                        <small class="text-muted">Étudiants</small>
+                                    </div>
+                                    <div class="col-4">
+                                        <h6 class="mb-0">5</h6>
+                                        <small class="text-muted">Devoirs</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <!-- Contenu Button -->
+                            <button class="btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#courseContentModal">
+                                <i class="fas fa-file-alt me-1"></i>Contenu
+                            </button>
+                            <!-- Devoirs Button -->
+                            <button class="btn btn-outline-secondary me-1" data-bs-toggle="modal" data-bs-target="#courseAssignmentsModal">
+                                <i class="fas fa-book me-1"></i>Devoirs
+                            </button>
+                            <!-- Edit Button -->
+                            <button class="btn btn-outline-warning me-1" data-bs-toggle="modal" data-bs-target="#editCourseModal">
+                                <i class="fas fa-edit me-1"></i>Éditer
+                            </button>
+                            <!-- Delete Button -->
+                            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteCourseModal">
+                                <i class="fas fa-trash-alt me-1"></i>Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Cours -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Nouveau Cours -->
+<div class="modal fade" id="newCourseModal" tabindex="-1" aria-labelledby="newCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="newCourseModalLabel">Créer un nouveau cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="courseName" class="form-label">Nom du cours</label>
+                        <input type="text" class="form-control" id="courseName" placeholder="Algèbre linéaire">
+                    </div>
+                    <div class="mb-3">
+                        <label for="courseClass" class="form-label">Classe</label>
+                        <select class="form-select" id="courseClass">
+                            <option selected>Choisir une classe</option>
+                            <option>Terminale A</option>
+                            <option>Terminale B</option>
+                            <option>Première C</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="courseDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="courseDescription" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="courseImage" class="form-label">Image du cours</label>
+                        <input class="form-control" type="file" id="courseImage">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary">Créer le cours</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editer Cours -->
+<div class="modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="editCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title" id="editCourseModalLabel">Modifier le cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="editCourseName" class="form-label">Nom du cours</label>
+                        <input type="text" class="form-control" id="editCourseName" value="Algèbre linéaire">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCourseClass" class="form-label">Classe</label>
+                        <select class="form-select" id="editCourseClass">
+                            <option selected>Terminale A</option>
+                            <option>Terminale B</option>
+                            <option>Première C</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCourseDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="editCourseDescription" rows="3">Cours avancé en algèbre linéaire</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editCourseImage" class="form-label">Image du cours</label>
+                        <input class="form-control" type="file" id="editCourseImage">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-warning">Mettre à jour le cours</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Supprimer Cours -->
+<div class="modal fade" id="deleteCourseModal" tabindex="-1" aria-labelledby="deleteCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteCourseModalLabel">Supprimer le cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir supprimer ce cours ? Cette action est irréversible.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-danger">Supprimer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Contenu du Cours -->
+<div class="modal fade" id="courseContentModal" tabindex="-1" aria-labelledby="courseContentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title" id="courseContentModalLabel">Contenu du Cours</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Ajouter et afficher le contenu du cours ici (textes, fichiers, vidéos, etc.).</p>
+                <!-- Contenu du cours -->
+                <div class="mb-3">
+                    <label for="content" class="form-label">Ajouter du contenu</label>
+                    <textarea class="form-control" id="content" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-info">Ajouter Contenu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajouter Devoir -->
+<div class="modal fade" id="courseAssignmentsModal" tabindex="-1" aria-labelledby="courseAssignmentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="courseAssignmentsModalLabel">Ajouter un devoir</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="assignmentTitle" class="form-label">Titre du devoir</label>
+                        <input type="text" class="form-control" id="assignmentTitle" placeholder="Devoir 1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignmentDescription" class="form-label">Description du devoir</label>
+                        <textarea class="form-control" id="assignmentDescription" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="assignmentDeadline" class="form-label">Date limite</label>
+                        <input type="date" class="form-control" id="assignmentDeadline">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-success">Ajouter Devoir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
