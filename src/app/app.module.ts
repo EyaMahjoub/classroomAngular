@@ -12,6 +12,7 @@ import { EnseignantComponent } from './enseignant/enseignant.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
 import { ClassListComponent } from './class-list/class-list.component';
+import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ClassListComponent } from './class-list/class-list.component';
     EnseignantComponent,
     NotFoundComponent,
     InscrireComponent,
-    ClassListComponent
+    ClassListComponent,
+    ListeEtudiantsComponent
   ],
   imports: [
     BrowserModule,
