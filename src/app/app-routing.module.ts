@@ -12,7 +12,7 @@ import { ClassListComponent } from './class-list/class-list.component';
 import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/connexion', pathMatch: 'full' }, 
+ // { path: '', redirectTo: '/connexion', pathMatch: 'full' },
   { path: 'etudiant', component: EtudiantComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
