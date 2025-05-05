@@ -14,6 +14,7 @@ import { InscrireComponent } from './inscrire/inscrire.component';
 import { ClassListComponent } from './class-list/class-list.component';
 import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.component';
 import { ListeCoursComponent } from './liste-cours/liste-cours.component';
+import { DetailsClasseComponent } from './details-classe/details-classe.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ListeCoursComponent } from './liste-cours/liste-cours.component';
     InscrireComponent,
     ClassListComponent,
     ListeEtudiantsComponent,
-    ListeCoursComponent
+    ListeCoursComponent,
+    DetailsClasseComponent
   ],
   imports: [
     BrowserModule,
