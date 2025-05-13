@@ -15,6 +15,7 @@ import { ClassListComponent } from './class-list/class-list.component';
 import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.component';
 import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 import { DetailsClasseComponent } from './details-classe/details-classe.component';
+import { HomeEnseignComponent } from './home-enseign/home-enseign.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DetailsClasseComponent } from './details-classe/details-classe.componen
     ClassListComponent,
     ListeEtudiantsComponent,
     ListeCoursComponent,
-    DetailsClasseComponent
+    DetailsClasseComponent,
+    HomeEnseignComponent
   ],
   imports: [
     BrowserModule,

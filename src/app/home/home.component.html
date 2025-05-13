@@ -1,274 +1,400 @@
+<style>
+    /* Thème premium - Cadres & Couleurs */
+    /* Thème moderne - Cartes uniformes */
+    :root {
+        --bleu-ciel: #6ECFF6;
+        --bleu-ciel-dark: #00A3E0;
+        --gris-fonce: #2C3E50;
+        --gris-moyen: #95A5A6;
+        --gris-clair: #ECF0F1;
+        --blanc: #FFFFFF;
+        --vert-mint: #A2D9CE;
+        --jaune-doux: #F9E79F;
+        --rose-pale: #FADBD8;
+        --ombre: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Cadre avec dégradé */
+    .card-gradient {
+        border: 2px solid transparent;
+        background: linear-gradient(white, white),
+            linear-gradient(to right, #E1F5FE, #B3E5FC);
+        background-clip: padding-box, border-box;
+        background-origin: padding-box, border-box;
+    }
+
+    /* Conteneur principal */
+    .container {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* Uniformisation des cartes */
+    .card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--ombre);
+        transition: all 0.3s ease;
+        background: var(--blanc);
+        height: 100%;
+        /* Uniformise la hauteur */
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Image responsive */
+    .card-img-top {
+        height: 160px;
+        object-fit: cover;
+        width: 100%;
+        filter: brightness(0.98);
+        transition: transform 0.5s ease;
+        border-bottom: 1px solid var(--gris-clair);
+    }
+
+    .card:hover .card-img-top {
+        transform: scale(1.03);
+        filter: brightness(1.02);
+    }
+
+    /* Corps de carte */
+    .card-body {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Titre en bleu ciel */
+    .card-title {
+        color: var(--bleu-ciel);
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+    }
+
+    .card:hover .card-title {
+        color: var(--bleu-ciel-dark);
+    }
+
+    /* Icône avant le titre */
+    .card-title::before {
+        content: '\f19d';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        color: currentColor;
+        margin-right: 0.6rem;
+        font-size: 1.2em;
+        opacity: 0.8;
+    }
+
+    /* Texte de description */
+    .card-text {
+        color: var(--gris-fonce);
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+        flex-grow: 1;
+        font-size: 0.95rem;
+    }
+
+    /* Pied de carte coloré */
+    .card-footer {
+        background: linear-gradient(to right, var(--gris-clair), var(--blanc));
+        border-top: 1px solid rgba(0, 0, 0, 0.03);
+        padding: 0.8rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Date stylisée */
+    .date-badge {
+        background-color: rgba(110, 207, 246, 0.15);
+        color: var(--gris-fonce);
+        padding: 0.3rem 0.8rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .date-badge i {
+        color: var(--bleu-ciel);
+        margin-right: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Tags colorés */
+    .card-tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+    }
+
+    .tag {
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .tag-primary {
+        background-color: rgba(110, 207, 246, 0.2);
+        color: var(--bleu-ciel-dark);
+    }
+
+    .tag-success {
+        background-color: rgba(162, 217, 206, 0.3);
+        color: #1E8449;
+    }
+
+    .tag-warning {
+        background-color: rgba(249, 231, 159, 0.3);
+        color: #B7950B;
+    }
+
+    /* Animation au survol */
+    @keyframes cardHover {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+
+        100% {
+            transform: translateY(-3px);
+        }
+    }
+
+    .card:hover {
+        animation: cardHover 0.5s ease forwards;
+        box-shadow: 0 8px 25px rgba(110, 207, 246, 0.2);
+    }
+
+    /* Message "Aucune classe" */
+    .no-classes {
+        background: var(--gris-clair);
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: center;
+        color: var(--gris-moyen);
+        border: 2px dashed rgba(149, 165, 166, 0.3);
+    }
+
+    .no-classes i {
+        font-size: 2rem;
+        color: var(--bleu-ciel);
+        margin-bottom: 1rem;
+        opacity: 0.7;
+    }
+</style>
 <app-navbar></app-navbar>
-    <div class="owl-carousel-item position-relative">
-      <img class="img-fluid" src="./../assets/img/carousel-1.jpg" alt="">
-      <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
-          <div class="container">
-              <div class="row justify-content-start">
-                  <div class="col-sm-10 col-lg-8">
-                      <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Meilleurs cours en ligne</h5>
-                      <h1 class="display-3 text-white animated slideInDown">La meilleure plateforme d'apprentissage en ligne
-                      </h1>
-                      <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Rejoindre un cours</a>
-                      <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">cours</a>
-                  </div>
-              </div>
-          </div>
+<div class="owl-carousel-item position-relative">
+    <img class="img-fluid" src="./../assets/img/carousel-1.jpg" alt="">
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+        style="background: rgba(24, 29, 56, .7);">
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-sm-10 col-lg-8">
+                    <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Meilleurs cours en ligne</h5>
+                    <h1 class="display-3 text-white animated slideInDown">La meilleure plateforme d'apprentissage en
+                        ligne
+                    </h1>
+                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Rejoindre un cours</a>
+                    <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">cours</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                        <h5 class="mb-3">Instructeurs qualifiés
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                        <h5 class="mb-3">Cours en ligne
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-home text-primary mb-4"></i>
+                        <h5 class="mb-3">Devoir à faire
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
+                        <h5 class="mb-3">Bibliothèque de livres
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-xxl py-5 category">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
+            <h1 class="mb-5">Catégories de cours
+            </h1>
+            <div class="container mt-4">
+                <div class="container mt-4">
+                    <div *ngIf="classes.length === 0" class="no-classes">
+                        <i class="fas fa-book-open"></i>
+                        <p>Aucune classe trouvée.</p>
+                    </div>
+                    <div class="row" *ngIf="classes.length > 0">
+                        <div class="col-md-4 mb-4" *ngFor="let classe of classes">
+                            <div class="card">
+                                <img *ngIf="classe.image" [src]="classe.image" class="card-img-top" alt="Image classe">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ classe.nom }}</h5>
+                                    <p class="card-text">{{ classe.description }}</p>
+
+                                    <div class="card-tags">
+                                        <span class="tag tag-primary">Cours</span>
+                                        <span *ngIf="classe.niveau === 'débutant'"
+                                            class="tag tag-success">Débutant</span>
+                                        <span *ngIf="classe.niveau === 'avancé'" class="tag tag-warning">Avancé</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="date-badge">
+                                        <i class="far fa-calendar-alt"></i>
+                                        {{ classe.creation | date:'dd/MM/yyyy' }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Categories Start -->
+
+
+        <!-- cours Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title bg-white text-center text-primary px-3">Cours</h6>
+                    <h1 class="mb-5">Cours populaires
+                    </h1>
+                </div>
+
+                <div *ngIf="nonAssocieesClasses.length === 0" class="no-classes">
+                    <i class="fas fa-book-open"></i>
+                    <p>Aucune classe trouvée.</p>
+                </div>
+
+
+
+<div class="row g-4 justify-content-center" *ngIf="nonAssocieesClasses.length > 0">
+  <div class="col-lg-4 col-md-6 d-flex align-items-stretch" *ngFor="let classe of nonAssocieesClasses">
+    <div class="course-item bg-light w-100 d-flex flex-column">
+      <div class="position-relative overflow-hidden">
+        <img *ngIf="classe.image" [src]="classe.image" class="img-fluid" alt="Image classe" />
+        <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+          <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">
+            Rejoindre ce cours
+          </a>
+        </div>
       </div>
-  </div>
-
-  
-
-  <div class="container-xxl py-5">
-      <div class="container">
-          <div class="row g-4">
-              <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div class="service-item text-center pt-3">
-                      <div class="p-4">
-                          <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                          <h5 class="mb-3">Instructeurs qualifiés
-                          </h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                  <div class="service-item text-center pt-3">
-                      <div class="p-4">
-                          <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                          <h5 class="mb-3">Cours en ligne
-                          </h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                  <div class="service-item text-center pt-3">
-                      <div class="p-4">
-                          <i class="fa fa-3x fa-home text-primary mb-4"></i>
-                          <h5 class="mb-3">Devoir à faire
-                          </h5>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                  <div class="service-item text-center pt-3">
-                      <div class="p-4">
-                          <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
-                          <h5 class="mb-3">Bibliothèque de livres
-                          </h5>
-                      </div>
-                  </div>
-              </div>
-          </div>
+      <div class="text-center p-4 pb-0 flex-grow-1">
+        <h5 class="mb-2">{{ classe.nom }}</h5>
+        <p class="mb-2">{{ classe.description }}</p>
+        <div class="card-tags mb-2">
+          <span class="badge bg-primary me-1">Cours</span>
+          <span *ngIf="classe.niveau === 'débutant'" class="badge bg-success me-1">Débutant</span>
+          <span *ngIf="classe.niveau === 'avancé'" class="badge bg-warning text-dark">Avancé</span>
+        </div>
       </div>
-  </div>
-
-  
-  <div class="container-xxl py-5 category">
-      <div class="container">
-          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-              <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
-              <h1 class="mb-5">Catégories de cours
-              </h1>
-          </div>
-          <div class="row g-3">
-              <div class="col-lg-7 col-md-6">
-                  <div class="row g-3">
-                      <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                          <a class="position-relative d-block overflow-hidden" href="">
-                              <img class="img-fluid" src="./../assets/img/cat-1.jpg" alt="">
-                              <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                  <h5 class="m-0">Web Design</h5>
-                                  <small class="text-primary">49 cours</small>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                          <a class="position-relative d-block overflow-hidden" href="">
-                              <img class="img-fluid" src="./../assets/img/cat-2.jpg" alt="">
-                              <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                  <h5 class="m-0">Graphic Design</h5>
-                                  <small class="text-primary">49 cours</small>
-                              </div>
-                          </a>
-                      </div>
-                      <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                          <a class="position-relative d-block overflow-hidden" href="">
-                              <img class="img-fluid" src="./../assets/img/cat-3.jpg" alt="">
-                              <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                  <h5 class="m-0">Video Editing</h5>
-                                  <small class="text-primary">49 cours</small>
-                              </div>
-                          </a>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                  <a class="position-relative d-block h-100 overflow-hidden" href="">
-                      <img class="img-fluid position-absolute w-100 h-100" src="./../assets/img/cat-4.jpg" alt="" style="object-fit: cover;">
-                      <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
-                          <h5 class="m-0">Online Marketing</h5>
-                          <small class="text-primary">49 cours</small>
-                      </div>
-                  </a>
-              </div>
-          </div>
+      <div class="d-flex border-top">
+        <small class="flex-fill text-center py-2">
+          <i class="far fa-calendar-alt text-primary me-2"></i>
+          {{ classe.creation | date: 'dd/MM/yyyy' }}
+        </small>
       </div>
+    </div>
   </div>
-  <!-- Categories Start -->
+</div>
 
 
-  <!-- cours Start -->
-  <div class="container-xxl py-5">
-      <div class="container">
-          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-              <h6 class="section-title bg-white text-center text-primary px-3">Cours</h6>
-              <h1 class="mb-5">Cours populaires
-              </h1>
-          </div>
-          <div class="row g-4 justify-content-center">
-              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div class="course-item bg-light">
-                      <div class="position-relative overflow-hidden">
-                          <img class="img-fluid" src="./../assets/img/course-1.jpg" alt="">
-                          <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                              <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Rejoindre cet cours</a>
-                          </div>
-                      </div>
-                      <div class="text-center p-4 pb-0">
-                          <h5 class="mb-4">Web Design & Development Course for Beginners</h5>
-                      </div>
-                      <div class="d-flex border-top">
-                          <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                          <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                  <div class="course-item bg-light">
-                      <div class="position-relative overflow-hidden">
-                          <img class="img-fluid" src="./../assets/img/course-2.jpg" alt="">
-                          <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                              <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Rejoindre cet cours</a>
-                          </div>
-                      </div>
-                      <div class="text-center p-4 pb-0">
-                         
-                          <h5 class="mb-4">Web Design & Development Course for Beginners</h5>
-                      </div>
-                      <div class="d-flex border-top">
-                          <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                          <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                  <div class="course-item bg-light">
-                      <div class="position-relative overflow-hidden">
-                          <img class="img-fluid" src="./../assets/img/course-3.jpg" alt="">
-                          <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                              <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Rejoindre cet cours</a>
-                          </div>
-                      </div>
-                      <div class="text-center p-4 pb-0">
-                          
-                          <h5 class="mb-4">Web Design & Development Course for Beginners</h5>
-                      </div>
-                      <div class="d-flex border-top">
-                          <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                          <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- cours End -->
+
+                
+        <!-- cours End -->
 
 
-  <!-- Team Start -->
-  <div class="container-xxl py-5">
-      <div class="container">
-          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-              <h6 class="section-title bg-white text-center text-primary px-3">Instructeurs</h6>
-              <h1 class="mb-5">Instructeurs experts</h1>
-          </div>
-          <div class="row g-4">
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                  <div class="team-item bg-light">
-                      <div class="overflow-hidden">
-                          <img class="img-fluid" src="./../assets/img/team-1.jpg" alt="">
-                      </div>
-                      <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                          <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="text-center p-4">
-                          <h5 class="mb-0">Instructor Name</h5>
-                          <small>Designation</small>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                  <div class="team-item bg-light">
-                      <div class="overflow-hidden">
-                          <img class="img-fluid" src="./../assets/img/team-2.jpg" alt="">
-                      </div>
-                      <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                          <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="text-center p-4">
-                          <h5 class="mb-0">Instructor Name</h5>
-                          <small>Designation</small>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                  <div class="team-item bg-light">
-                      <div class="overflow-hidden">
-                          <img class="img-fluid" src="./../assets/img/team-3.jpg" alt="">
-                      </div>
-                      <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                          <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="text-center p-4">
-                          <h5 class="mb-0">Instructor Name</h5>
-                          <small>Designation</small>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                  <div class="team-item bg-light">
-                      <div class="overflow-hidden">
-                          <img class="img-fluid" src="./../assets/img/team-4.jpg" alt="">
-                      </div>
-                      <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                          <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                              <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                      <div class="text-center p-4">
-                          <h5 class="mb-0">Instructor Name</h5>
-                          <small>Designation</small>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <!-- Team End -->
-  <!-- Back to Top -->
-  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-  
-  <app-footer></app-footer>
+        <!-- Team Start -->
+        <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Instructeurs</h6>
+            <h1 class="mb-5">Instructeurs experts</h1>
+        </div>
+        
+        <div class="row g-4 justify-content-center" *ngIf="enseignants.length > 0">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let enseignant of enseignants">
+                <div class="card text-center shadow-sm h-100">
+                    <div class="overflow-hidden">
+                        <!-- Afficher l'image de l'enseignant -->
+                        <img *ngIf="enseignant.image" [src]="enseignant.image" class="card-img-top" alt="{{ enseignant.nom }}" style="height: 200px; object-fit: cover;">
+                    </div>
+                     <div class="card-footer justify-content-center">
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title mt-3">{{ enseignant.nom }}</h5>
+                        <p class="card-text">Email : {{ enseignant.email }}</p>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Message si aucun enseignant n'est trouvé -->
+        <div *ngIf="enseignants.length === 0" class="text-center mt-4">
+            Aucun enseignant trouvé.
+        </div>
+    </div>
+</div>
+
+        <!-- Team End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+        <app-footer></app-footer>

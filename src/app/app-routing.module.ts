@@ -12,10 +12,14 @@ import { ClassListComponent } from './class-list/class-list.component';
 import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.component';
 import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 import { DetailsClasseComponent } from './details-classe/details-classe.component';
+import { HomeEnseignComponent } from './home-enseign/home-enseign.component';
+
+
 
 const routes: Routes = [
  // { path: '', redirectTo: '/connexion', pathMatch: 'full' },
   { path: 'etudiant', component: EtudiantComponent },
+  { path: 'homeEnseig', component: HomeEnseignComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'home', component: HomeComponent },
   { path: 'footer', component: FooterComponent },
