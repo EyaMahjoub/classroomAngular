@@ -13,6 +13,7 @@ import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.compo
 import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 import { DetailsClasseComponent } from './details-classe/details-classe.component';
 import { HomeEnseignComponent } from './home-enseign/home-enseign.component';
+import { UploadFichierComponent } from './upload-fichier/upload-fichier.component';
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'etudiants', component: ListeEtudiantsComponent },
   { path: 'cours', component:ListeCoursComponent},
   { path: 'detaileClasse', component:DetailsClasseComponent},
+  { path: 'createpdf', component:UploadFichierComponent},
   { path: '**', component: NotFoundComponent },
   
 ];

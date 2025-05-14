@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; // ✅ Ajouter FormsModule ici
+
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
-import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -16,6 +18,7 @@ import { ListeEtudiantsComponent } from './liste-etudiants/liste-etudiants.compo
 import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 import { DetailsClasseComponent } from './details-classe/details-classe.component';
 import { HomeEnseignComponent } from './home-enseign/home-enseign.component';
+import { UploadFichierComponent } from './upload-fichier/upload-fichier.component';
 
 @NgModule({
   declarations: [
@@ -32,15 +35,16 @@ import { HomeEnseignComponent } from './home-enseign/home-enseign.component';
     ListeEtudiantsComponent,
     ListeCoursComponent,
     DetailsClasseComponent,
-    HomeEnseignComponent
+    HomeEnseignComponent,
+    UploadFichierComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule // ✅ Doit être ici
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }

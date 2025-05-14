@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h3>Uploader un fichier PDF</h3>
+
+  <input type="file" (change)="onFileSelected($event)" accept="application/pdf" class="form-control mb-2">
+
+  <!-- Optionnel : Sélection de la classe -->
+  <!--
+  <select [(ngModel)]="classeId" class="form-select mb-2">
+    <option *ngFor="let c of classes" [value]="c.id">{{ c.nom }}</option>
+  </select>
+  -->
+
+  <button (click)="upload()" class="btn btn-primary" [disabled]="!selectedFile">Envoyer</button>
+</div>
