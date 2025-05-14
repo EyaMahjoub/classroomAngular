@@ -10,7 +10,11 @@
                </div>
                <div class="list-group list-group-flush">
                    <a *ngFor="let c of classes" href="#" (click)="chargerClasse(c.id); $event.preventDefault()" (click)="selectClasse(c); $event.preventDefault()"(click)="afficherDetails = true ; $event.preventDefault()" class="list-group-item list-group-item-action active">
-                       <i class="fa fa-book me-2"></i>  {{ c.nom }}
+                    <div class="menu-classe" [ngStyle]="{'background-image': 'url(' + c.image + ')'}">
+                      <div class="overlay">
+                        <h5 class="titre-classe">Nom de la classe : {{ c.nom }}</h5>
+                      </div>
+                    </div>
                    </a>
                </div>
            </div>

@@ -1,0 +1,25 @@
+.menu-classe {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* foncé mais transparent */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titre-classe {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px black;
+}
