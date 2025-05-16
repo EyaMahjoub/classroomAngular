@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2>Ajouter un Devoir</h2>
+  <form (ngSubmit)="onSubmit()" #devoirForm="ngForm">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        [(ngModel)]="devoir.title"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="deadline" class="form-label">Deadline</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="deadline"
+        name="deadline"
+        [(ngModel)]="devoir.deadline"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="devoirForm.invalid">
+      Ajouter
+    </button>
+  </form>
+
+  <div *ngIf="message" class="alert mt-3" [class.alert-success]="success" [class.alert-danger]="!success">
+    {{ message }}
+  </div>
+</div>

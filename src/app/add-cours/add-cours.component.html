@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="card shadow-lg rounded-4 p-4">
+    <h2 class="mb-4 text-center text-primary">Ajouter un Cours</h2>
+
+    <form [formGroup]="coursForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" id="titre" formControlName="titre" class="form-control" [ngClass]="{'is-invalid': coursForm.get('titre')?.invalid && coursForm.get('titre')?.touched}">
+        <div *ngIf="coursForm.get('titre')?.invalid && coursForm.get('titre')?.touched" class="invalid-feedback">
+          Le titre est requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" formControlName="description" rows="4" class="form-control" [ngClass]="{'is-invalid': coursForm.get('description')?.invalid && coursForm.get('description')?.touched}"></textarea>
+        <div *ngIf="coursForm.get('description')?.invalid && coursForm.get('description')?.touched" class="invalid-feedback">
+          La description est requise.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="classe_id" class="form-label">Classe</label>
+        <select id="classe_id" formControlName="classe_id" class="form-select" [ngClass]="{'is-invalid': coursForm.get('classe_id')?.invalid && coursForm.get('classe_id')?.touched}">
+          <option value="">-- Sélectionnez une classe --</option>
+          <option *ngFor="let classe of classes" [value]="classe.id">
+            {{ classe.nom }}
+          </option>
+        </select>
+        <div *ngIf="coursForm.get('classe_id')?.invalid && coursForm.get('classe_id')?.touched" class="invalid-feedback">
+          La classe est requise.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="devoire_id" class="form-label">Devoir (optionnel)</label>
+        <select id="devoire_id" formControlName="devoire_id" class="form-select">
+          <option value="">-- Aucun devoir associé --</option>
+          <option *ngFor="let devoir of devoirs" [value]="devoir.id">
+            {{ devoir.titre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-4" [disabled]="coursForm.invalid">Ajouter</button>
+      </div>
+    </form>
+  </div>
+</div>

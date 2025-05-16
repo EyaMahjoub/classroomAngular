@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; // ✅ Ajouter FormsModule ici
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // ✅ Ajouter FormsModule ici
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,10 @@ import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 import { DetailsClasseComponent } from './details-classe/details-classe.component';
 import { HomeEnseignComponent } from './home-enseign/home-enseign.component';
 import { UploadFichierComponent } from './upload-fichier/upload-fichier.component';
+import { AjouterClasseComponent } from './ajouter-classe/ajouter-classe.component';
+import { AddCoursComponent } from './add-cours/add-cours.component';
+import { AddDevoirComponent } from './add-devoir/add-devoir.component';
+import { DevoirsComponent } from './devoirs/devoirs.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +40,18 @@ import { UploadFichierComponent } from './upload-fichier/upload-fichier.componen
     ListeCoursComponent,
     DetailsClasseComponent,
     HomeEnseignComponent,
-    UploadFichierComponent
+    UploadFichierComponent,
+    AjouterClasseComponent,
+    AddCoursComponent,
+    AddDevoirComponent,
+    DevoirsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule // ✅ Doit être ici
+    FormsModule ,
+      ReactiveFormsModule,// ✅ Doit être ici
   ],
   providers: [],
   bootstrap: [AppComponent]

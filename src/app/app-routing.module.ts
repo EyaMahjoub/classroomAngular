@@ -14,6 +14,11 @@ import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 import { DetailsClasseComponent } from './details-classe/details-classe.component';
 import { HomeEnseignComponent } from './home-enseign/home-enseign.component';
 import { UploadFichierComponent } from './upload-fichier/upload-fichier.component';
+import { AjouterClasseComponent } from './ajouter-classe/ajouter-classe.component';
+import { AddCoursComponent } from './add-cours/add-cours.component';
+import { AddDevoirComponent } from './add-devoir/add-devoir.component';
+import { DevoirsComponent } from './devoirs/devoirs.component';
+
 
 
 
@@ -30,8 +35,12 @@ const routes: Routes = [
   { path: 'classes', component: ClassListComponent },
   { path: 'etudiants', component: ListeEtudiantsComponent },
   { path: 'cours', component:ListeCoursComponent},
-  { path: 'detaileClasse', component:DetailsClasseComponent},
+  { path: 'detaileClasse/:id', component: DetailsClasseComponent },
+  { path: 'ajouterDevoir', component: AddDevoirComponent },
   { path: 'createpdf', component:UploadFichierComponent},
+    { path: 'listedevoirs', component:DevoirsComponent},
+  { path: 'ajoutercours', component:AddCoursComponent},
+  { path: 'ajouterClasse', component:AjouterClasseComponent},
   { path: '**', component: NotFoundComponent },
   
 ];

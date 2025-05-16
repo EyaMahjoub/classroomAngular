@@ -15,31 +15,69 @@
     .header-gradient {
       background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
     }
-    .assignment-card {
-      transition: all 0.3s ease;
-      border-left: 4px solid #4285f4;
-    }
-    .assignment-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
     .emoji-divider {
       font-size: 1.2rem;
       margin: 0 0.5rem;
       opacity: 0.7;
     }
-    .announcement-box {
-      background: linear-gradient(to right, #f8f9fa, #ffffff);
-      border-left: 4px solid #fbbc05;
-    }
-    .submission-badge {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
-    }
     .comment-box {
       background-color: #f8f9fa;
       border-radius: 8px;
       border-left: 3px solid #dadce0;
+      transition: all 0.2s ease;
+    }
+    .comment-box:hover {
+      background-color: #f1f3f4;
+      border-left-color: #4285f4;
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 8px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .active-nav::after {
+      width: 100%;
+    }
+    .assignment-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .assignment-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .floating-btn {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    .floating-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .user-card:hover {
+      background-color: #f8f9fa;
+    }
+    .animate-pulse-slow {
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
     }
   </style>
 </head>
@@ -49,238 +87,307 @@
   <header class="relative header-gradient text-white py-8 px-6 shadow-lg">
     <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://www.gstatic.com/classroom/themes/img_learnlanguage.jpg');"></div>
     <div class="relative z-10 max-w-6xl mx-auto">
-      <div class="flex justify-between items-start">
-        <div>
-          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">projetAdnen</h1>
-          <p class="text-lg mt-2 flex items-center">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div class="mb-4 md:mb-0">
+          <div class="flex items-center">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight">{{classe.nom}}</h1>
+         
+          </div>
+          <p class="text-lg mt-2 flex flex-wrap items-center">
             <span class="mr-2">Code du cours :</span>
-            <span class="font-mono bg-opacity-20 px-3 py-1 rounded-md flex items-center">
-              <i class="fas fa-key mr-2"></i> q343roh
-              <button class="ml-2 text-white hover:text-gray-200">
+            <span class="font-mono  bg-opacity-20 px-3 py-1 rounded-md flex items-center">
+              {{classe.code}}
+              <button class="ml-2 text-white hover:text-gray-200" title="Copier le code">
                 <i class="far fa-copy"></i>
               </button>
             </span>
+           <span class="hidden md:inline-block mx-2 text-white text-opacity-70">|</span>
+<span class="mt-2 md:mt-0 text-white text-opacity-80">
+  <i class="fas fa-calendar-alt mr-1"></i> Créé à : {{classe.createdAt}}
+</span>
+
           </p>
         </div>
-        <div class="hidden md:block">
+        <div class="flex space-x-3">
           <button class=" bg-opacity-20 hover:bg-opacity-30 text-white font-medium py-2 px-4 rounded-lg flex items-center">
-            <i class="fas fa-users mr-2"></i> 24 étudiants
+            <i class="fas fa-users mr-2"></i> {{ etudiants.length }} étudiants
           </button>
+        
         </div>
       </div>
       
-      <!-- Navigation -->
+      <!-- Navigation améliorée -->
       <nav class="mt-6 flex space-x-1 border-b border-white border-opacity-20">
-        <a href="#" class="px-4 py-2 text-white font-medium border-b-2 border-white">Flux</a>
-        <a href="#" class="px-4 py-2 text-white text-opacity-80 hover:text-opacity-100 font-medium">Devoirs</a>
-        <a href="#" class="px-4 py-2 text-white text-opacity-80 hover:text-opacity-100 font-medium">Personnes</a>
-  
-      </nav>
+  <a href="#" class="nav-link active-nav px-4 py-2 text-white font-medium">
+    <i class="fas fa-bullhorn mr-2"></i> Flux
+  </a>
+ <a [routerLink]="['/detaileClasse', classe.classeId]" class="nav-link px-4 py-2 text-white text-opacity-80 hover:text-opacity-100 font-medium">
+  <i class="fas fa-book mr-2"></i> Devoirs
+</a>
+
+<a routerLink="/ajouterDevoir" class="nav-link px-4 py-2 text-white text-opacity-80 hover:text-opacity-100 font-medium">
+  <i class="fas fa-plus-circle mr-2"></i> Ajouter Devoirs
+</a>
+
+</nav>
+
     </div>
   </header>
 
   <!-- Contenu principal -->
-  <main class="max-w-6xl mx-auto mt-8 px-4 pb-12">
-
-    <!-- Section À venir améliorée -->
-    <section class="bg-white rounded-xl shadow-sm p-6 mb-6 border-l-4 border-green-500 flex items-start">
-      <div class="bg-green-100 text-green-800 rounded-full p-3 mr-4">
-        <i class="fas fa-calendar-alt text-lg"></i>
-      </div>
-      <div>
-        <h2 class="text-xl font-semibold text-gray-800 mb-1">À venir</h2>
-        <p class="text-gray-600">Aucun devoir à remettre dans les jours qui viennent.</p>
-        <button class="mt-3 text-blue-600 hover:text-blue-800 font-medium flex items-center">
-          <i class="far fa-calendar-plus mr-2"></i> Ajouter un rappel
-        </button>
-      </div>
-    </section>
-
-  
-    <!-- Liste des devoirs améliorée -->
-    <section class="bg-white rounded-xl shadow-sm p-6">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
-          <i class="fas fa-tasks text-blue-500 mr-3"></i> Devoirs
-        </h2>
+  <main class="max-w-6xl mx-auto mt-8 px-4 pb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    
+    <!-- Colonne principale -->
+    <div class="lg:col-span-2 space-y-6">
       
-      </div>
-
-      <!-- Filtres -->
+      <!-- Section Annonces -->
+     
       
-      <!-- Devoir 1 amélioré -->
-      <div class="assignment-card bg-gray-50 p-6 rounded-xl mb-6 shadow-inner hover:shadow-md">
-        <div class="flex justify-between items-start mb-3">
-          <div>
-            <h3 class="text-xl font-medium text-gray-900 flex items-center">
-              <i class="fas fa-file-alt text-blue-500 mr-3"></i> Devoir : "hhh"
-            </h3>
-            <div class="flex items-center text-sm text-gray-500 mt-1">
-              <img src="https://ui-avatars.com/api/?name=Achwek+B&background=0D8ABC&color=fff&size=32" alt="Avatar" class="w-5 h-5 rounded-full mr-1">
-              <span>Publié par Achwek Bellili</span>
-              <span class="emoji-divider">•</span>
-              <span><i class="far fa-clock mr-1"></i> Créé à : 19:52</span>
-              <span class="emoji-divider">•</span>
-              <span class="text-green-600 font-medium"><i class="fas fa-check-circle mr-1"></i> Actif</span>
+      <!-- Section Devoirs à venir -->
+      <section class="bg-white rounded-xl shadow-sm overflow-hidden" id="#">
+        <div class="border-b border-gray-200 px-6 py-4 flex justify-between items-center"  >
+          <h3 class="font-semibold text-gray-800 flex items-center">
+            <i class="fas fa-calendar-check text-green-500 mr-2"></i> Cours 
+          </h3>
+         <a 
+  routerLink="/ajoutercours" 
+  class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"
+>
+  <i class="fas fa-plus mr-1"></i> Nouveau Cours
+</a>
+
+        </div>
+        <div class="divide-y divide-gray-200">
+          <!-- Devoir 1 -->
+          <div class="assignment-card p-6 hover:cursor-pointer" *ngFor="let cour of  cours">
+            <div class="flex justify-between items-start">
+              <div >
+                <h4 class="font-semibold text-gray-900 mb-1">{{cour.titre}}</h4>
+                <p class="text-sm text-gray-600 mb-2">{{cour.description}}</p>
+                <div class="flex items-center text-xs text-gray-500">
+                  <span class="flex items-center mr-3">
+                    <i class="far fa-calendar-alt mr-1"></i> Cree  le  {{cour.createdAt}}
+                  </span>
+                 
+                </div>
+              </div>
+            
             </div>
           </div>
-          <div class="flex space-x-2">
-            <button class="text-gray-500 hover:text-blue-600 p-2 rounded-full hover:bg-gray-100">
+          
+        
+        </div>
+        
+      </section>
+      
+      <!-- Section Commentaires améliorés -->
+      <section class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h4 class="font-semibold text-gray-700 flex items-center">
+            <i class="fas fa-comments text-blue-500 mr-2"></i> Discussions récentes ({{commentaires.length}})
+          </h4>
+         
+        </div>
+        
+        <div class="space-y-4">
+          <!-- Commentaire 1 -->
+          <div class="comment-box p-4 hover:cursor-pointer">
+            <div class="flex justify-between items-start mb-2" *ngFor="let commentaire of  commentaires "  >
+              <div class="flex items-center">
+                <img [src]="commentaire.auteur.imageProfile" alt="Avatar" class="w-8 h-8 rounded-full mr-3">
+                <div>
+                  <span class="font-medium text-gray-800">{{commentaire.auteur.prenom}} {{commentaire.auteur.nom}}</span>
+                  <span class="text-xs text-gray-500 ml-2">Étudiant</span>
+                    <p class="text-sm text-gray-600 pl-11">{{commentaire.contenu}}</p>
+                </div>
+              </div>
+              <span class="text-xs text-gray-500">{{commentaire.createdAt}}</span>
+            
+            </div>
+       
+            
+           
+          </div>
+          
+          <!-- Commentaire 2 -->
+          <div class="comment-box p-4 hover:cursor-pointer">
+           
+           
+         
+          
+            
+           
+          </div>
+        </div>
+        
+        <!-- Zone de nouveau commentaire -->
+        <div class="mt-6 flex items-start">
+      
+          <div class="flex-1">
+           
+            <textarea class="w-full border border-gray-300 border-t-0 rounded-b-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows="3" placeholder="ajouter un nouvelle commentaire..."></textarea>
+            <div class="flex justify-between items-center mt-2">
+              <div class="flex space-x-2">
+                <button class="text-gray-500 hover:text-blue-600 p-1 rounded-full">
+                  <i class="far fa-paperclip"></i>
+                </button>
+                <button class="text-gray-500 hover:text-blue-600 p-1 rounded-full">
+                  <i class="far fa-smile"></i>
+                </button>
+              </div>
+              <button class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg">
+                Publier
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Colonne latérale -->
+    <div class="space-y-6">
+      <!-- Section Personnes améliorée -->
+      <section class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+            <i class="fas fa-users text-green-500 mr-3"></i> Membres ({{ etudiants.length }})
+          </h2>
+       
+        </div>
+        
+      
+        <div class="space-y-3 max-h-96 overflow-y-auto pr-2">
+          <!-- Enseignant -->
+          <div class="user-card flex items-center p-3 rounded-lg hover:cursor-pointer" *ngFor="let etudinat of  etudiants ">
+            <div class="relative">
+  
+<img [src]="etudinat.imageProfile" alt="Avatar" class="w-10 h-10 rounded-full mr-4">
+
+          
+            </div>
+            <div class="flex-1">
+              <p class="text-gray-900 font-medium">{{etudinat.prenom}}  {{etudinat.nom}}</p>
+            
+            </div>
+         
+          </div>
+          
+       
+        
+        
+          
+         
+        </div>
+        
+     
+      </section>
+      
+      <!-- Section Documents récents -->
+      <section class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+            <i class="fas fa-file-alt text-purple-500 mr-3"></i> Documents récents
+          </h2>
+          <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+            <i class="fas fa-upload mr-1"></i> Ajouter
+          </button>
+        </div>
+        
+        <div class="space-y-3">
+          <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 hover:cursor-pointer">
+            <div class="bg-red-100 text-red-600 p-2 rounded-lg mr-3">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-gray-900 truncate">Correction_Devoir3.pdf</p>
+              <p class="text-xs text-gray-500">Ajouté aujourd'hui</p>
+            </div>
+            <button class="text-gray-400 hover:text-gray-600">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </div>
+          
+          <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 hover:cursor-pointer">
+            <div class="bg-blue-100 text-blue-600 p-2 rounded-lg mr-3">
+              <i class="fas fa-file-word"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-gray-900 truncate">Instructions_Projet_Final.docx</p>
+              <p class="text-xs text-gray-500">Ajouté hier</p>
+            </div>
+            <button class="text-gray-400 hover:text-gray-600">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </div>
+          
+          <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 hover:cursor-pointer">
+            <div class="bg-green-100 text-green-600 p-2 rounded-lg mr-3">
+              <i class="fas fa-file-excel"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-gray-900 truncate">Notes_Partiel1.xlsx</p>
+              <p class="text-xs text-gray-500">Ajouté le 10/03</p>
+            </div>
+            <button class="text-gray-400 hover:text-gray-600">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
+          </div>
+          
+          <div class="flex items-center p-2 rounded-lg hover:bg-gray-50 hover:cursor-pointer">
+            <div class="bg-yellow-100 text-yellow-600 p-2 rounded-lg mr-3">
+              <i class="fas fa-file-powerpoint"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-gray-900 truncate">Cours5_Graphes.pptx</p>
+              <p class="text-xs text-gray-500">Ajouté le 08/03</p>
+            </div>
+            <button class="text-gray-400 hover:text-gray-600">
               <i class="fas fa-ellipsis-v"></i>
             </button>
           </div>
         </div>
-
-        <!-- Description du devoir -->
-        <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
-          <p class="text-gray-700">Ce devoir porte sur les concepts fondamentaux vus en classe. Veuillez répondre aux questions avec soin et détail.</p>
+        
+        <div class="mt-4 text-center">
+          <a href="#" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+            Voir tous les documents
+          </a>
         </div>
-
-        <!-- Métriques du devoir -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div class="bg-white p-3 rounded-lg border border-gray-200 flex items-center">
-            <div class="bg-blue-100 text-blue-800 rounded-full p-2 mr-3">
-              <i class="fas fa-user-graduate"></i>
-            </div>
-            <div>
-              <p class="text-sm text-gray-500">Étudiants</p>
-              <p class="font-medium">24/24</p>
-            </div>
-          </div>
-          <div class="bg-white p-3 rounded-lg border border-gray-200 flex items-center">
-            <div class="bg-green-100 text-green-800 rounded-full p-2 mr-3">
-              <i class="fas fa-check"></i>
-            </div>
-            <div>
-              <p class="text-sm text-gray-500">Soumissions</p>
-              <p class="font-medium">18/24</p>
-            </div>
-          </div>
-          <div class="bg-white p-3 rounded-lg border border-gray-200 flex items-center">
-            <div class="bg-purple-100 text-purple-800 rounded-full p-2 mr-3">
-              <i class="fas fa-star"></i>
-            </div>
-            <div>
-              <p class="text-sm text-gray-500">Moyenne</p>
-              <p class="font-medium">15.2/20</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Soumissions améliorées -->
-        <div class="mt-4 bg-white p-4 rounded-lg border border-gray-200">
-          <div class="flex justify-between items-center mb-3">
-            <h4 class="font-semibold text-gray-700 flex items-center">
-              <i class="fas fa-file-upload text-blue-500 mr-2"></i> Soumissions
-            </h4>
-            <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
-              <i class="fas fa-download mr-1"></i> Tout télécharger
-            </button>
-          </div>
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Étudiant</th>
-                  <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
-                  <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remis le</th>
-                  <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-gray-200">
-                <tr>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">Ahmed Ben Ali</td>
-                  <td class="px-4 py-3 whitespace-nowrap">
-                    <span class="bg-green-100 text-green-800 submission-badge rounded-full flex items-center w-fit">
-                      <i class="fas fa-check-circle mr-1"></i> Remis
-                    </span>
-                  </td>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">15 mars, 19:52</td>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm font-medium">
-                    <a href="#" class="text-blue-600 hover:text-blue-900 mr-3"><i class="fas fa-eye"></i></a>
-                    <a href="#" class="text-blue-600 hover:text-blue-900"><i class="fas fa-download"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">Ines Ben Ammar</td>
-                  <td class="px-4 py-3 whitespace-nowrap">
-                    <span class="bg-red-100 text-red-800 submission-badge rounded-full flex items-center w-fit">
-                      <i class="fas fa-exclamation-circle mr-1"></i> En retard
-                    </span>
-                  </td>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">-</td>
-                  <td class="px-4 py-3 whitespace-nowrap text-sm font-medium">
-                    <button class="text-gray-400 cursor-not-allowed mr-3"><i class="fas fa-eye"></i></button>
-                    <button class="text-gray-400 cursor-not-allowed"><i class="fas fa-download"></i></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Commentaires améliorés -->
-        <div class="mt-4 bg-white p-4 rounded-lg border border-gray-200">
-          <h4 class="font-semibold text-gray-700 mb-3 flex items-center">
-            <i class="fas fa-comments text-blue-500 mr-2"></i> Commentaires (2)
-          </h4>
+      </section>
+      
+      <!-- Section Calendrier -->
+      <section class="bg-white rounded-xl shadow-sm p-6">
+       
+    
+    
           
-          <div class="space-y-4">
-            <!-- Commentaire 1 -->
-            <div class="comment-box p-3">
-              <div class="flex justify-between items-start mb-1">
-                <div class="flex items-center">
-                  <img src="https://ui-avatars.com/api/?name=Ahmed+B&background=0D8ABC&color=fff&size=32" alt="Avatar" class="w-6 h-6 rounded-full mr-2">
-                  <span class="font-medium text-gray-800">Ahmed Ben Ali</span>
-                </div>
-                <span class="text-xs text-gray-500">15 mars, 20:15</span>
-              </div>
-              <p class="text-sm text-gray-600 pl-8">C'était un peu difficile à comprendre. Pourriez-vous clarifier la question 3 ?</p>
-              <div class="flex justify-end mt-2">
-                <button class="text-gray-500 hover:text-blue-600 text-xs">
-                  <i class="far fa-thumbs-up mr-1"></i> Utile
-                </button>
-              </div>
-            </div>
-            
-            <!-- Commentaire 2 -->
-            <div class="comment-box p-3">
-              <div class="flex justify-between items-start mb-1">
-                <div class="flex items-center">
-                  <img src="https://ui-avatars.com/api/?name=Ines+B&background=FF6B6B&color=fff&size=32" alt="Avatar" class="w-6 h-6 rounded-full mr-2">
-                  <span class="font-medium text-gray-800">Ines Ben Ammar</span>
-                </div>
-                <span class="text-xs text-gray-500">16 mars, 08:42</span>
-              </div>
-              <p class="text-sm text-gray-600 pl-8">Merci pour l'explication en classe, cela m'a beaucoup aidé pour la partie 2 du devoir.</p>
-              <div class="flex justify-end mt-2">
-                <button class="text-gray-500 hover:text-blue-600 text-xs">
-                  <i class="far fa-thumbs-up mr-1"></i> Utile
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Zone de nouveau commentaire -->
-          <div class="mt-4 flex items-start">
-            <img src="https://ui-avatars.com/api/?name=Prof+A&background=0D8ABC&color=fff&size=32" alt="Avatar" class="w-8 h-8 rounded-full mr-3 mt-1">
-            <div class="flex-1">
-              <textarea class="w-full border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows="2" placeholder="Ajouter un commentaire..."></textarea>
-              <div class="flex justify-end mt-2">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-1 px-3 rounded">
-                  Commenter
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-   
-    </section>
+         
+      
+      </section>
+    </div>
   </main>
 
+  <!-- Bouton flottant pour mobile -->
+  <button class="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full p-4 shadow-lg floating-btn lg:hidden">
+    <i class="fas fa-plus text-xl"></i>
+  </button>
 
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-6 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-gray-600 text-sm">
+            <i class="far fa-copyright mr-1"></i> 2023 projetAdnen Classroom. Tous droits réservés.
+          </p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-600 hover:text-blue-600 text-sm">Confidentialité</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 text-sm">Conditions</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600 text-sm">Aide</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

@@ -11,9 +11,13 @@
 <body class="bg-gray-200 font-sans antialiased">
   <app-navbar></app-navbar>
   <!-- Bouton Ajouter une classe -->
-  <button id="add-class-btn" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 mt-4 ml-4">
-    <i class="fas fa-plus mr-2"></i> Ajouter une classe
-  </button>
+  <a 
+  [routerLink]="['/ajouterClasse']" 
+  class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 mt-4 ml-4 inline-flex items-center"
+>
+  <i class="fas fa-plus mr-2"></i> Ajouter une classe
+</a>
+
   
 
   <div class="container my-4 px-4">
@@ -32,15 +36,12 @@
         </div>
         <div class="p-7 bg-gray-100" id="emm">
           <div class="button-container">
-            <button class="btn-edit">
-              <i class="fas fa-edit"></i> Editer
-            </button>
-            <button class="btn-delete">
-              <i class="fas fa-trash-alt"></i> Supprimer
-            </button>
-            <a  [routerLink]="['/detaileClasse']" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 mt-2">
-              <i class="fas fa-eye"></i> Voir Détaille
-            </a>
+           
+          <a [routerLink]="['/detaileClasse', enginant.id]" 
+   class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 mt-2">
+  <i class="fas fa-eye"></i> Voir Détaille
+</a>
+
           </div>
         </div>
       </div>

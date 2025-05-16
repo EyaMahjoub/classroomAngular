@@ -1,0 +1,15 @@
+<div *ngIf="loading">Chargement des devoirs...</div>
+
+<div *ngIf="errorMessage" style="color:red">{{ errorMessage }}</div>
+
+<ul *ngIf="!loading && devoirs.length > 0">
+  <li *ngFor="let devoir of devoirs">
+    <h3>{{ devoir.title }}</h3>
+    <p>Créé le : {{ devoir.createdAt | date:'medium' }}</p>
+    <p>Date limite : {{ devoir.deadline | date:'medium' }}</p>
+  </li>
+</ul>
+
+<div *ngIf="!loading && devoirs.length === 0">
+  Aucun devoir trouvé pour cette classe.
+</div>

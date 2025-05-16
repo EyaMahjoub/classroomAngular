@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2>Ajouter une nouvelle classe</h2>
+  <form (ngSubmit)="onSubmit()" #classeForm="ngForm">
+    
+    <div class="form-group mb-3">
+      <label for="nom">Nom de la classe</label>
+      <input type="text" id="nom" class="form-control" required [(ngModel)]="classe.nom" name="nom">
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="code">Code</label>
+      <input type="text" id="code" class="form-control" required [(ngModel)]="classe.code" name="code">
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" [(ngModel)]="classe.description" name="description"></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="image">URL de l'image</label>
+      <input type="text" id="image" class="form-control" [(ngModel)]="classe.image" name="image">
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="enseignant_id">ID de l'enseignant</label>
+      <input type="number" id="enseignant_id" class="form-control" required [(ngModel)]="classe.enseignant_id" name="enseignant_id">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!classeForm.form.valid">Ajouter</button>
+  </form>
+</div>
